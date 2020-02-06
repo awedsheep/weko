@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import NavBar from "./components/views/Navbar/NavBar";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./routes/Home";
@@ -12,6 +12,11 @@ import BuySellView from "./routes/BuySellView";
 import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
+import axios from "axios";
+const config = require('./config.json');
+
+
+
 
 const dataIn = {
 	news: [
@@ -728,7 +733,46 @@ const dataIn = {
 	]
 };
 
+
 function App() {
+	// handleNews();
+	//Database에 넣고 싶을 때 쓰는 function. //handleNews()를 uncommnet처리 
+	async function handleNews(){
+		console.log("entered");
+		const NewNewsItem ={
+			id:"11",//Unique String
+			number:133,//integer 
+			tag:"[Winnipeg]",//String
+			title:"NEW CASTLE",//String
+			author:"Shawn Choi",//String
+			date:"2020-02-07",// String
+			view:433,//integer
+			body:"<div>anyString</div>",
+			replies: [{},{},{}] //object
+		}
+		try{
+			await axios.post(`${config.api.invokeUrl}/news/${NewNewsItem.id}`, NewNewsItem);
+		}catch(err){
+			console.log(`error adding data: ${err}`);
+		}
+	}
+
+	//데이타 베이스 배워서 일단 내가 임의로 넣은걸 콘솔로 띄워봤음 (DynamoDB -> Lambda -> API gateWay -> Here)
+	//load database and console it
+	//ComponentDidMount
+	useEffect(() =>{ async function fetch(){try{
+		const res = await axios.get(`${config.api.invokeUrl}/news`);
+		console.log(res.data);
+	}catch(err){
+		console.log(`error recieving data: ${err}`);
+	}}
+	fetch();
+	}, []);
+
+	
+
+
+	
 	const [data, setData] = useState(dataIn);
 	// console.log(data);
 

@@ -1,0 +1,5 @@
+{
+    "api":{
+        "invokeUrl": "https://68ggcjtva8.execute-api.ca-central-1.amazonaws.com/news"
+    }
+}
