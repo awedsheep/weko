@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/weko/static/css/main.1e11e4ec.chunk.css",
+    "main.css": "/weko/static/css/main.0ec9696d.chunk.css",
     "main.js": "/weko/static/js/main.33cc7647.chunk.js",
     "main.js.map": "/weko/static/js/main.33cc7647.chunk.js.map",
     "runtime-main.js": "/weko/static/js/runtime-main.2ad88260.js",
@@ -9,10 +9,10 @@
     "static/js/2.22c4a7bd.chunk.js": "/weko/static/js/2.22c4a7bd.chunk.js",
     "static/js/2.22c4a7bd.chunk.js.map": "/weko/static/js/2.22c4a7bd.chunk.js.map",
     "index.html": "/weko/index.html",
-    "precache-manifest.62df8640da208388f8b641afebe9f719.js": "/weko/precache-manifest.62df8640da208388f8b641afebe9f719.js",
+    "precache-manifest.2af2f05a6d094eae7e3534443927453b.js": "/weko/precache-manifest.2af2f05a6d094eae7e3534443927453b.js",
     "service-worker.js": "/weko/service-worker.js",
     "static/css/2.9887b5d1.chunk.css.map": "/weko/static/css/2.9887b5d1.chunk.css.map",
-    "static/css/main.1e11e4ec.chunk.css.map": "/weko/static/css/main.1e11e4ec.chunk.css.map",
+    "static/css/main.0ec9696d.chunk.css.map": "/weko/static/css/main.0ec9696d.chunk.css.map",
     "static/js/2.22c4a7bd.chunk.js.LICENSE": "/weko/static/js/2.22c4a7bd.chunk.js.LICENSE",
     "static/media/avatar.png": "/weko/static/media/avatar.28024190.png",
     "static/media/Banner1.css": "/weko/static/media/banner3.5a9cb819.jpg",
@@ -24,7 +24,7 @@
     "static/js/runtime-main.2ad88260.js",
     "static/css/2.9887b5d1.chunk.css",
     "static/js/2.22c4a7bd.chunk.js",
-    "static/css/main.1e11e4ec.chunk.css",
+    "static/css/main.0ec9696d.chunk.css",
     "static/js/main.33cc7647.chunk.js"
   ]
 }
