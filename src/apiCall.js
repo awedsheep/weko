@@ -15,7 +15,7 @@ const config = require("./config.json");
 	*/
 
 export const NewNewsItem = {
-	number: 133, //integer
+	number: 1334, //integer
 	tag: "[Brandon]", //String
 	title: "111111", //String
 	author: "1313", //String
