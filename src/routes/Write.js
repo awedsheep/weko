@@ -165,10 +165,12 @@ function Write({ location }) {
 				onFocus={onFocus}
 			/>{" "}
 			<div
-				dangerouslySetInnerHTML={{
-					__html: editorHtml
-				}}
-			></div>
+			// dangerouslySetInnerHTML={{
+			// 	__html: editorHtml
+			// }}
+			>
+				{editorHtml}
+			</div>
 		</div>
 	);
 }

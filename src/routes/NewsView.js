@@ -1,10 +1,10 @@
 import React from "react";
 import BrdOpen from "../components/Brds/BrdOpen";
 
-function NewsView({ data }) {
+function NewsView({ location }) {
 	return (
 		<div>
-			<BrdOpen />
+			<BrdOpen item={location.item.item} />
 		</div>
 	);
 }

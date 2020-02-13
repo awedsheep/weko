@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function BoardItem({ item, cat }) {
+function BoardItem({ num, item, cat }) {
+	console.log(item);
 	return (
 		<li>
 			<Link
 				to={{
-					pathname: "/" + cat + "/view/" + item.number,
+					pathname: "/" + cat + "/view/" + num,
 					item: { item }
 				}}
 			>

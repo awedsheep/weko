@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BoardItem from "./BarodItem";
 import "./Board.css";
 import more from "../images/more.png";
 import { Link } from "react-router-dom";
+import { getRecentTen } from "../../apiCall";
 // import { Image, Item } from "semantic-ui-react";
 
-function Board({ name, data, cat }) {
+function Board({ newestID, name, cat }) {
+	const [tenItems, setTenItems] = useState([]);
+
+	async function fetchTenItems() {
+		const res = await getRecentTen("News", newestID);
+		setTenItems(res);
+	}
+
+	useEffect(() => {
+		fetchTenItems();
+	}, []);
+	// console.log(tenItems);
 	return (
 		<div className="board">
 			<div className="board_header">
@@ -18,14 +30,14 @@ function Board({ name, data, cat }) {
 			</div>
 			<div className="board_list">
 				<ul>
-					{data
+					{tenItems
 						.slice(0)
 						.reverse()
-						.map(item => {
-							return <BoardItem key={item.number} item={item} cat={cat} />;
+						.map((item, i) => {
+							return <BoardItem key={i} num={i} item={item} cat={cat} />;
 						})}
 					{/* <Item.Group>
-					{data
+					{tenItems
 						.slice(0)
 						.reverse()
 						.map(item => {
