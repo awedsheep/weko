@@ -12,7 +12,7 @@ import BuySellView from "./routes/BuySellView";
 import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
-import { updateIndex, putPost, getItem, updateItemsById, fetch } from "./apiCall";
+import { updateIndex, putPost, getItem, updateItemsById, fetch, getRecentTen } from "./apiCall";
 
 const data = {
 	news: [
@@ -789,6 +789,7 @@ const data = {
 
 // fetch();
 
+// getRecentTen("news");
 
 function App() {
 	// var ppp = {

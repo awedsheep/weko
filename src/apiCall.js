@@ -53,12 +53,12 @@ export async function updateIndex(cat){
 
 // getRecentTen("News");
 //need to compare with scan.... 2querycalls vs scan
-export async function getRecentTen(cat, index) {
+export async function getRecentTen(cat) {
 	try {
 		const res = await axios.get(
-			`${config.api.invokeUrl}/post/${cat}/${index}/getrecent`
+			`${config.api.invokeUrl}/post/${cat}`
 		);
-		// console.log(res);
+		console.log(res);
 		return res.data;
 	} catch (err) {
 		console.log(`error adding data: ${err}`);
