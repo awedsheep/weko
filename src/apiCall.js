@@ -15,42 +15,40 @@ const config = require("./config.json");
 	*/
 
 export const NewNewsItem = {
-	number: 1334, //integer
-	tag: "[Brandon]", //String
-	title: "111111", //String
-	author: "1313", //String
-	date: "2020-02-10", // String
-	view: 433, //integer
-	body: "<div>anyString</div>",
-	replies: ["123", "12", "22"], //array
-	cat: "News"
+	cat: "news",
+	date: "2020-02-13-07-18-23-000",
+	content: 9
 };
 
 // putPost(NewNewsItem);
 export async function putPost(newParams) {
-	console.log("entered");
-
-	var index = await getItem("News", -1);
-	// console.log(index);
-	// index = index[0].index;
-	const NewNewsItem = {
-		id: index,
-		...newParams
-	};
+	console.log("Creating New Post...");
 	try {
-		await axios.post(`${config.api.invokeUrl}/post`, NewNewsItem);
+		await axios.post(`${config.api.invokeUrl}/post`, newParams);
 	} catch (err) {
 		console.log(`error adding data: ${err}`);
 	}
 
+	updateIndex(newParams.cat);
+}
+
+export async function updateIndex(cat){
+
 	const params = {
-		cat: "News",
-		id: -1,
-		changedValue: {
-			index: index + 1
-		}
-	};
-	updateItemsById(params);
+		cat : cat,
+		increament: true,
+
+	}
+
+	try {
+		const res = await axios.patch(
+			`${config.api.invokeUrl}/post/index`, params
+		);
+		// console.log(res);
+		return res.data;
+	} catch (err) {
+		console.log(`error adding data: ${err}`);
+	}
 }
 
 // getRecentTen("News");
@@ -67,13 +65,13 @@ export async function getRecentTen(cat, index) {
 	}
 }
 
-// getItem("News", "123");
-export async function getItem(cat, id) {
+// getItem("news", "123");
+export async function getItem(cat, date) {
 	console.log("attempting to start get Item or Items from key: cat, id");
 
 	try {
-		const res = await axios.get(`${config.api.invokeUrl}/post/${cat}/${id}`);
-		// console.log(res.data);
+		const res = await axios.get(`${config.api.invokeUrl}/post/${cat}/${date}`);
+		console.log(res);
 		return res.data[0].index;
 	} catch (err) {
 		console.log(`error adding data: ${err}`);
@@ -85,8 +83,8 @@ export async function getItem(cat, id) {
 export async function updateItemsById(params) {
 	console.log("attempting to start update parameters");
 	// const params = {
-	// 	cat: "News",
-	// 	id: "132", //Unique String
+	// 	cat: "news",
+	// 	date: "2020-02-13", //Unique String
 	// 	changedValue: {
 	// 		title: "NEW 22 CASTLE", //String
 	// 		author: "KJ Choi", //String

@@ -12,6 +12,7 @@ import BuySellView from "./routes/BuySellView";
 import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
+import { updateIndex, putPost, getItem, updateItemsById, fetch } from "./apiCall";
 
 const data = {
 	news: [
@@ -764,6 +765,30 @@ const data = {
 		}
 	]
 };
+// const NewNewsItem = {
+// 	cat: "news",
+// 	date: "2020-02-22-10-18-23-000",
+// 	content: 13
+// };
+
+// putPost(NewNewsItem);
+
+// const updateParam = {
+// 		cat: "news",
+// 		date: "2020-02-22-10-18-23-000", //Unique String
+// 		changedValue: {
+// 			content:222,
+// 			content2:11
+// 			//... you can add new attribute too
+// 		}
+// 	};
+// updateItemsById(updateParam);
+
+// updateIndex("news");
+// const oneItem = getItem("news", "2020-02-22-10-18-23-000");
+
+// fetch();
+
 
 function App() {
 	// var ppp = {

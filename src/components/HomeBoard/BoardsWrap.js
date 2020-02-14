@@ -9,7 +9,7 @@ function BoardsWrap() {
 		res = await getItem("News", -1);
 	}
 	useEffect(() => {
-		fetchNewstID();
+		// fetchNewstID();
 		// console.log(res);
 	}, []);
 	return (
