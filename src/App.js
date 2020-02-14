@@ -791,6 +791,9 @@ const data = {
 
 // getRecentTen("news");
 
+// getItem("news"); or getItem("news", "2020-02-15")
+
+
 function App() {
 	// var ppp = {
 	// 	tag: "[매니토바]",

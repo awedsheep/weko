@@ -66,17 +66,24 @@ export async function getRecentTen(cat) {
 }
 
 // getItem("news", "123");
+// getItem("news")
 export async function getItem(cat, date) {
 	console.log("attempting to start get Item or Items from key: cat, id");
 
 	try {
-		const res = await axios.get(`${config.api.invokeUrl}/post/${cat}/${date}`);
-		console.log(res);
+		var res = [];
+		if(date==null){
+			res = await axios.get(`${config.api.invokeUrl}/post/${cat}`);
+		}else{
+			res = await axios.get(`${config.api.invokeUrl}/post/${cat}/${date}`);
+		}
+		console.log(res.data);
 		return res.data[0].index;
 	} catch (err) {
 		console.log(`error adding data: ${err}`);
 	}
 }
+
 
 //아놔 업데이트 기능 구현 너무 어려웠음 ㅠㅠ. 지정된 아이디에 바꾸고 싶은 데이타만 changedValue에 넣어주셈 숫자 상관 없음
 // updateItemsById();
