@@ -12,7 +12,7 @@ import BuySellView from "./routes/BuySellView";
 import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
-import { updateIndex, putPost, getItem, updateItemsById, fetch, getRecentTen } from "./apiCall";
+import { updateIndex, putPost, getItem, updateItemsById, fetch, getRecentTen, getCatWithFiltered } from "./apiCall";
 
 const data = {
 	news: [
@@ -792,6 +792,17 @@ const data = {
 // getRecentTen("news");
 
 // getItem("news"); or getItem("news", "2020-02-15")
+
+
+// var filterParam = {
+// 	cat: "news",
+// 	expression: "#n >= :v and #n2 <= :v2",
+// 	names: { "#n": "content2", "#n2": "content" },
+// 	values: { ":v": 5, ":v2": 5 }
+
+// }
+
+// getCatWithFiltered(filterParam);
 
 
 function App() {

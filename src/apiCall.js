@@ -32,10 +32,10 @@ export async function putPost(newParams) {
 	updateIndex(newParams.cat);
 }
 
-export async function updateIndex(cat){
+export async function updateIndex(cat) {
 
 	const params = {
-		cat : cat,
+		cat: cat,
 		increament: true,
 
 	}
@@ -72,9 +72,9 @@ export async function getItem(cat, date) {
 
 	try {
 		var res = [];
-		if(date==null){
+		if (date == null) {
 			res = await axios.get(`${config.api.invokeUrl}/post/${cat}`);
-		}else{
+		} else {
 			res = await axios.get(`${config.api.invokeUrl}/post/${cat}/${date}`);
 		}
 		console.log(res.data);
@@ -116,6 +116,29 @@ export async function fetch() {
 		return res.data;
 	} catch (err) {
 		console.log(`error recieving data: ${err}`);
+	}
+}
+
+//test with and "#n >= :v and #n2 >= :v2"
+// var filterParam = {
+// 	cat : "news",
+// 		expression: "#n >= :v", 
+// 		names: {"#n": "content"},
+// 		values: {":v": 5}
+// 	
+// }
+
+// getCatWithFiltered("news", filterExpression);
+export async function getCatWithFiltered(filterParam) {
+	console.log("attempting to start get Item or Items from key: cat, id");
+
+	try {
+		var res = await axios.post(`${config.api.invokeUrl}/post/filtered`, filterParam);
+
+		console.log(res.data);
+		return res.data[0].index;
+	} catch (err) {
+		console.log(`error adding data: ${err}`);
 	}
 }
 
