@@ -16,7 +16,7 @@ export default function Footer() {
 	return (
 		<div>
 			<Segment vertical style={{ padding: "5em 0em", background: "#eee" }}>
-				<Container text>
+				<Container>
 					<Grid divided stackable>
 						<Grid.Row>
 							<Grid.Column width={3}>

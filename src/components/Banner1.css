@@ -4,7 +4,7 @@
 	margin: 0 auto;
 	height: 300px;
 
-	margin-top: 50px;
+	margin-top: 10px;
 	position: relative;
 	/* border: 2px solid black; */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
@@ -30,6 +30,14 @@
 	top: 40px;
 	left: 40px;
 	font-size: 70px;
+}
+.banner img {
+	width: 100%;
+	margin-top: 1%;
+}
+.slick-list,
+.slick-track {
+	height: 300px;
 }
 
 @media (max-width: 950px) {

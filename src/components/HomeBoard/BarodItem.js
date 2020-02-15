@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function BoardItem({ num, item, cat }) {
-	console.log(item);
+	// console.log(item);
 	return (
 		<li>
 			<Link
@@ -24,7 +24,7 @@ function BoardItem({ num, item, cat }) {
 						<div className="board_tag">{item.tag ? item.tag : ""}</div>
 						{item.title}
 					</div>
-
+					<br />
 					{/* <div className="board_item_new">N</div> */}
 				</div>
 			</Link>

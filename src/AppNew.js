@@ -26,6 +26,9 @@ const getWidth = () => {
 	return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth;
 };
 function DesktopContainer({ children }) {
+	const [sidebarOpened, setsidebarOpened] = useState(false);
+	const handleSidebarHide = () => setsidebarOpened(false);
+	const handleToggle = () => setsidebarOpened(true);
 	return (
 		<Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
 			{/* <Segment
@@ -34,12 +37,24 @@ function DesktopContainer({ children }) {
 				// style={{ minHeight: 700, padding: "1em 0em" }}
 				vertical
 			> */}
+			<Sidebar
+				as={Menu}
+				animation="overlay"
+				onHide={handleSidebarHide}
+				vertical
+				visible={sidebarOpened}
+				direction="right"
+				width="thin"
+			>
+				<Menu.Item as="a">Log in</Menu.Item>
+				<Menu.Item as="a">Sign Up</Menu.Item>
+			</Sidebar>
 			<Menu
 				borderless
 				// fixed={menuFixed ? "top" : undefined}
 				// style={menuFixed ? fixedMenuStyle : menuStyle}
 			>
-				<Container text>
+				<Container>
 					<Menu.Item position="right">
 						<Image size="small" src={logo} />
 					</Menu.Item>
@@ -48,7 +63,7 @@ function DesktopContainer({ children }) {
 					<Menu.Item as="a">자유게시판</Menu.Item>
 					<Menu.Item as="a">구인/구직</Menu.Item>
 
-					<Menu.Menu position="right">
+					<Menu.Menu position="left">
 						<Dropdown text="Dropdown" pointing className="link item">
 							<Dropdown.Menu>
 								<Dropdown.Item>List Item</Dropdown.Item>
@@ -67,6 +82,9 @@ function DesktopContainer({ children }) {
 							</Dropdown.Menu>
 						</Dropdown>
 					</Menu.Menu>
+					<Menu.Item onClick={handleToggle} position="right">
+						<Icon name="sidebar" size="big" />
+					</Menu.Item>
 				</Container>
 			</Menu>
 			{/* </Segment> */}
@@ -105,19 +123,22 @@ function MobileContainer({ children }) {
 			</Sidebar>
 
 			<Sidebar.Pusher dimmed={sidebarOpened}>
-				<Container>
-					<Menu pointing secondary size="large">
-						<Menu.Item onClick={handleToggle} position="right">
-							<Icon name="sidebar" />
-						</Menu.Item>
-						{/* <Menu.Item position="right">
+				{/* <Container> */}
+				<Menu pointing secondary size="large">
+					<Menu.Item position="left">
+						<Image size="small" src={logo} />
+					</Menu.Item>
+					<Menu.Item onClick={handleToggle} position="right">
+						<Icon name="sidebar" size="big" />
+					</Menu.Item>
+					{/* <Menu.Item position="right">
 							<Button as="a">Log in</Button>
 							<Button as="a" style={{ marginLeft: "0.5em" }}>
 								Sign Up
 							</Button>
 						</Menu.Item> */}
-					</Menu>
-				</Container>
+				</Menu>
+				{/* </Container> */}
 				{/* <HomepageHeading mobile /> */}
 
 				{children}
