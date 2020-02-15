@@ -30,12 +30,12 @@ function Board({ newestID, name, cat }) {
 			</div>
 			<div className="board_list">
 				<ul>
-					{tenItems
+					{/* {tenItems
 						.slice(0)
 						.reverse()
 						.map((item, i) => {
 							return <BoardItem key={i} num={i} item={item} cat={cat} />;
-						})}
+						})} */}
 					{/* <Item.Group>
 					{tenItems
 						.slice(0)

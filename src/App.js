@@ -12,13 +12,14 @@ import BuySellView from "./routes/BuySellView";
 import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
+import { updateIndex, putPost, getItem, updateItemsById, fetch, getRecentTen, getCatWithFiltered } from "./apiCall";
 
 const data = {
 	news: [
 		{
 			number: 1,
 			tag: "위니펙",
-			title: "캐나다 위니펙 한인여러분 화이팅",
+			title: "캐나다 위니펙 한인여러분 화이팅!!!",
 			author: "관리자이름이너무길면어떻게될까",
 			date: "2020-02-25-13-32",
 			view: 543,
@@ -764,6 +765,45 @@ const data = {
 		}
 	]
 };
+// const NewNewsItem = {
+// 	cat: "news",
+// 	date: "2020-02-22-10-18-23-000",
+// 	content: 13
+// };
+
+// putPost(NewNewsItem);
+
+// const updateParam = {
+// 		cat: "news",
+// 		date: "2020-02-22-10-18-23-000", //Unique String
+// 		changedValue: {
+// 			content:222,
+// 			content2:11
+// 			//... you can add new attribute too
+// 		}
+// 	};
+// updateItemsById(updateParam);
+
+// updateIndex("news");
+// const oneItem = getItem("news", "2020-02-22-10-18-23-000");
+
+// fetch();
+
+// getRecentTen("news");
+
+// getItem("news"); or getItem("news", "2020-02-15")
+
+
+// var filterParam = {
+// 	cat: "news",
+// 	expression: "#n >= :v and #n2 <= :v2",
+// 	names: { "#n": "content2", "#n2": "content" },
+// 	values: { ":v": 5, ":v2": 5 }
+
+// }
+
+// getCatWithFiltered(filterParam);
+
 
 function App() {
 	// var ppp = {
