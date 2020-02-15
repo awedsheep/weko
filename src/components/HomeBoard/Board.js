@@ -15,7 +15,7 @@ function Board({ newestID, name, cat }) {
 	}
 
 	useEffect(() => {
-		fetchTenItems();
+		// fetchTenItems();
 	}, []);
 	// console.log(tenItems);
 	return (
