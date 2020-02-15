@@ -804,6 +804,9 @@ const data = {
 
 // getCatWithFiltered(filterParam);
 
+//YOU CAN FETCH only entertainment with this method
+// var x = getItem("entertainment", null);
+
 
 function App() {
 	// var ppp = {
@@ -817,7 +820,7 @@ function App() {
 	// 	replies: [],
 	// 	cat: "News"
 	// };
-
+	
 	return (
 		<div className="warper_all">
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}

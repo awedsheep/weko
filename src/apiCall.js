@@ -14,11 +14,11 @@ const config = require("./config.json");
 		5.fetch() method scans entire table and return the whole table.
 	*/
 
-export const NewNewsItem = {
-	cat: "news",
-	date: "2020-02-13-07-18-23-000",
-	content: 9
-};
+// export const NewNewsItem = {
+// 	cat: "news",
+// 	date: "2020-02-13-07-18-23-000",
+// 	content: 9
+// };
 
 // putPost(NewNewsItem);
 export async function putPost(newParams) {
@@ -68,12 +68,13 @@ export async function getRecentTen(cat) {
 // getItem("news", "123");
 // getItem("news")
 export async function getItem(cat, date) {
-	console.log("attempting to start get Item or Items from key: cat, id");
-
+	console.log("attempting to start get Item or Items from key: cat, date");
+	console.log(cat)
+	console.log(date)
 	try {
 		var res = [];
 		if (date == null) {
-			res = await axios.get(`${config.api.invokeUrl}/post/${cat}`);
+			res = await axios.get(`${config.api.invokeUrl}/post/${cat}/n`);
 		} else {
 			res = await axios.get(`${config.api.invokeUrl}/post/${cat}/${date}`);
 		}
@@ -130,7 +131,7 @@ export async function fetch() {
 
 // getCatWithFiltered("news", filterExpression);
 export async function getCatWithFiltered(filterParam) {
-	console.log("attempting to start get Item or Items from key: cat, id");
+	console.log("attempting to start get Item or Items from key: cat, date");
 
 	try {
 		var res = await axios.post(`${config.api.invokeUrl}/post/filtered`, filterParam);
