@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React from "react";
 import NavBar from "./components/views/Navbar/NavBar";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./routes/Home";
@@ -12,7 +12,16 @@ import BuySellView from "./routes/BuySellView";
 import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
-import { updateIndex, putPost, getItem, updateItemsById, fetch, getRecentTen, getCatWithFiltered } from "./apiCall";
+import {
+	updateIndex,
+	putPost,
+	getItem,
+	updateItemsById,
+	fetch,
+	getRecentTen,
+	getCatWithFiltered
+} from "./apiCall";
+import Footer from "./znew/component/Footer";
 
 const data = {
 	news: [
@@ -793,7 +802,6 @@ const data = {
 
 // getItem("news"); or getItem("news", "2020-02-15")
 
-
 // var filterParam = {
 // 	cat: "news",
 // 	expression: "#n >= :v and #n2 <= :v2",
@@ -804,10 +812,13 @@ const data = {
 
 // getCatWithFiltered(filterParam);
 
+<<<<<<< HEAD
 //YOU CAN FETCH only entertainment with this method
 // var x = getItem("entertainment", null);
 
 
+=======
+>>>>>>> 0f4fb8cf604c2aa1c58743ab8facdfc1713a4a99
 function App() {
 	// var ppp = {
 	// 	tag: "[매니토바]",
@@ -820,7 +831,12 @@ function App() {
 	// 	replies: [],
 	// 	cat: "News"
 	// };
+<<<<<<< HEAD
 	
+=======
+	//https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad1-160x600.jpeg
+	//https://i.pinimg.com/236x/1f/28/55/1f28550a0ec49a99458041dfab3ee9b1--recent-earthquakes-the-game.jpg
+>>>>>>> 0f4fb8cf604c2aa1c58743ab8facdfc1713a4a99
 	return (
 		<div className="warper_all">
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}
@@ -828,54 +844,66 @@ function App() {
 				<div className="header">
 					<NavBar />
 				</div>
-				<div className="container_body">
-					<Banner1 />
-					<Route path="/" exact={true} render={() => <Home data={data} />} />
-					<Route
-						path="/news"
-						exact={true}
-						render={() => <News data={data.news} />}
-					/>
-					<Route
-						path="/news/view"
-						exact={true}
-						render={() => <News data={data.news} />}
-					/>
-					<Route path="/news/view/:id" component={NewsView} />
-					{/* <Route path="/news/view/:id" component={NewsView} /> */}
-					<Route
-						path="/forum"
-						exact={true}
-						render={() => <Forum data={data.forum} />}
-					/>
-					<Route
-						path="/forum/view/:id"
-						// exact={true}
-						render={() => <ForumView data={data.forum} />}
-					/>
-					<Route
-						path="/buysell"
-						exact={true}
-						render={() => <BuySell data={data.buysell} />}
-					/>
-					<Route
-						path="/buysell/view/:id"
-						// exact={true}
-						render={() => <BuySellView data={data.buysell} />}
-					/>
-					<Route
-						path="/info"
-						exact={true}
-						render={() => <InfoTips data={data.info} />}
-					/>
-					<Route
-						path="/info/view/:id"
-						// exact={true}
-						render={() => <InfoTipsView data={data.info} />}
-					/>
-					<Route path="/:cat/write" component={Write} />
+				<div className="container_body_warp">
+					<div className="container_body">
+						<div className="container_body_left">
+							<img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad1-160x600.jpeg" />
+							<img src="https://www.epa.gov/sites/production/files/styles/large/public/2018-10/english_national_web_banner_160x600.jpg" />
+						</div>
+						<div className="container_body_right">
+							<img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad2-160x600.jpeg" />
+							<img src="https://i.pinimg.com/236x/1f/28/55/1f28550a0ec49a99458041dfab3ee9b1--recent-earthquakes-the-game.jpg" />
+						</div>
+						<Banner1 />
+						<Route path="/" exact={true} render={() => <Home data={data} />} />
+						<Route
+							path="/news"
+							exact={true}
+							render={() => <News data={data.news} />}
+						/>
+						<Route
+							path="/news/view"
+							exact={true}
+							render={() => <News data={data.news} />}
+						/>
+						<Route path="/news/view/:id" component={NewsView} />
+						{/* <Route path="/news/view/:id" component={NewsView} /> */}
+						<Route
+							path="/forum"
+							exact={true}
+							render={() => <Forum data={data.forum} />}
+						/>
+						<Route
+							path="/forum/view/:id"
+							// exact={true}
+							render={() => <ForumView data={data.forum} />}
+						/>
+						<Route
+							path="/buysell"
+							exact={true}
+							render={() => <BuySell data={data.buysell} />}
+						/>
+						<Route
+							path="/buysell/view/:id"
+							// exact={true}
+							render={() => <BuySellView data={data.buysell} />}
+						/>
+						<Route
+							path="/info"
+							exact={true}
+							render={() => <InfoTips data={data.info} />}
+						/>
+						<Route
+							path="/info/view/:id"
+							// exact={true}
+							render={() => <InfoTipsView data={data.info} />}
+						/>
+						<Route path="/:cat/write" component={Write} />
+					</div>
 				</div>
-				<div className="footer">WECO Korean Comunity ©2020 </div>
+
+				{/* <div className="footer">WECO Korean Comunity ©2020 </div> */}
+				<Footer />
 			</BrowserRouter>
 		</div>
 	);

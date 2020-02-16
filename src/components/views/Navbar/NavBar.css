@@ -92,6 +92,11 @@ a {
 	display: none;
 }
 
+/*2nd navbar*/
+#root > div > div.header > nav:nth-child(2) {
+	height: 50px;
+}
+
 .menu li {
 	display: inline-block;
 	margin-left: 30px;
@@ -111,8 +116,43 @@ a {
 }
 
 .menu {
-	margin-top: 40px;
+	margin-top: 5px;
 	float: right;
+}
+.container_body_warp {
+	/* display: inline-block; */
+}
+.container_body_right,
+.container_body_left {
+	width: 20%;
+	height: 99%;
+	/* background: cornflowerblue; */
+	position: absolute;
+}
+.container_body_left > img {
+	float: right;
+}
+.container_body_left > img,
+.container_body_right > img {
+	height: 49%;
+	margin-bottom: 3%;
+}
+.container_body_left {
+	left: -21%;
+	top: 10px;
+}
+.container_body_right {
+	right: -21%;
+	top: 10px;
+}
+
+.container_body {
+	position: relative;
+	max-width: 1200px;
+	margin: auto;
+	background: #f5f6f7;
+	padding-top: 20px;
+	width: 60%;
 }
 
 .text_editor {
