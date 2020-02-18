@@ -126,7 +126,7 @@ export async function fetch() {
 // 		expression: "#n >= :v", 
 // 		names: {"#n": "content"},
 // 		values: {":v": 5}
-// 	
+	
 // }
 
 // getCatWithFiltered("news", filterExpression);
@@ -142,6 +142,46 @@ export async function getCatWithFiltered(filterParam) {
 		console.log(`error adding data: ${err}`);
 	}
 }
+
+// const NewComment = {
+// 		cat: "newsC",
+// 		date: "2020-02-13-07-18-23-000",
+// 		parent: {cat: "newsC", date:"2020-02-13-07-18-23-001"},
+// 		children: [] //this is array
+// 	};
+
+
+export async function putComment(newParams) {
+	console.log("Creating New comment...");
+	try {
+		await axios.post(`${config.api.invokeUrl}/comment`, newParams);
+	} catch (err) {
+		console.log(`error adding data: ${err}`);
+	}
+
+	updateIndex(newParams.cat);
+}
+
+export async function updateCommentById(params) {
+	console.log("attempting to start update parameters");
+	// const params = {
+	// 	cat: "news",
+	// 	date: "2020-02-13", //Unique String
+	// 	changedValue: {
+	// 		content: "",
+	// 		up:""
+	// 	}
+	// };
+
+	//
+	try {
+		await axios.patch(`${config.api.invokeUrl}/comment`, params);
+	} catch (err) {
+		console.log(`error adding data: ${err}`);
+	}
+}
+
+
 
 //데이타 베이스 배워서 일단 내가 임의로 넣은걸 콘솔로 띄워봤음 (DynamoDB -> Lambda -> API gateWay -> Here)
 // load database and console it

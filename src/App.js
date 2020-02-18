@@ -19,7 +19,9 @@ import {
 	updateItemsById,
 	fetch,
 	getRecentTen,
-	getCatWithFiltered
+	getCatWithFiltered,
+	putComment,
+	updateCommentById
 } from "./apiCall";
 import Footer from "./znew/component/Footer";
 
@@ -812,13 +814,29 @@ const data = {
 
 // getCatWithFiltered(filterParam);
 
-<<<<<<< HEAD
 //YOU CAN FETCH only entertainment with this method
 // var x = getItem("entertainment", null);
 
+// const NewComment = {
+// 		cat: "newsC",
+// 		date: "2020-02-13-07-18-23-500",
+// 		parent: {cat: "newsC", date:"2020-02-13-07-18-23-001"},
+// 		children: [{date:"2020-02-13-07-18-23-002"},{date:"2020-02-13-07-18-23-003"}]
+// 	};
 
-=======
->>>>>>> 0f4fb8cf604c2aa1c58743ab8facdfc1713a4a99
+// putComment(NewComment);
+
+
+// const updateComment = {
+// 		cat: "newsC",
+// 		date: "2020-02-13-07-18-23-500", 
+// 		changedValue: {
+// 			children: [{date:"2020-02-13-07-18-23-002"},{date:"2020-02-13-07-18-23-003"}]
+// 		}
+// 	};
+// updateCommentById(updateComment);
+
+
 function App() {
 	// var ppp = {
 	// 	tag: "[매니토바]",
@@ -831,12 +849,7 @@ function App() {
 	// 	replies: [],
 	// 	cat: "News"
 	// };
-<<<<<<< HEAD
 	
-=======
-	//https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad1-160x600.jpeg
-	//https://i.pinimg.com/236x/1f/28/55/1f28550a0ec49a99458041dfab3ee9b1--recent-earthquakes-the-game.jpg
->>>>>>> 0f4fb8cf604c2aa1c58743ab8facdfc1713a4a99
 	return (
 		<div className="warper_all">
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}
