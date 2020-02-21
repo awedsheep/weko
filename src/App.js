@@ -12,18 +12,11 @@ import BuySellView from "./routes/BuySellView";
 import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
-import {
-	updateIndex,
-	putPost,
-	getItem,
-	updateItemsById,
-	fetch,
-	getRecentTen,
-	getCatWithFiltered,
-	putComment,
-	updateCommentById
-} from "./apiCall";
-import Footer from "./znew/component/Footer";
+import axios from "axios";
+const config = require('./config.json');
+
+
+
 
 
 
@@ -791,27 +784,48 @@ const data = {
 // 	content: 13
 // };
 
-// putPost(NewNewsItem);
 
-// const updateParam = {
-// 		cat: "news",
-// 		date: "2020-02-22-10-18-23-000", //Unique String
-// 		changedValue: {
-// 			content:222,
-// 			content2:11
-// 			//... you can add new attribute too
-// 		}
-// 	};
-// updateItemsById(updateParam);
 
-// updateIndex("news");
-// const oneItem = getItem("news", "2020-02-22-10-18-23-000");
+	// handleNews();
+	//Database에 넣고 싶을 때 쓰는 function. //handleNews()를 uncommnet처리 
+	// async function handleNews(){
+	// 	console.log("entered");
+	// 	const NewNewsItem ={
+	// 		id:"11",//Unique String
+	// 		number:133,//integer 
+	// 		tag:"[Winnipeg]",//String
+	// 		title:"NEW CASTLE",//String
+	// 		author:"Shawn Choi",//String
+	// 		date:"2020-02-07",// String
+	// 		view:433,//integer
+	// 		body:"<div>anyString</div>",
+	// 		replies: [{},{},{}] //object
+	// 	}
+	// 	try{
+	// 		await axios.post(`${config.api.invokeUrl}/news/${NewNewsItem.id}`, NewNewsItem);
+	// 	}catch(err){
+	// 		console.log(`error adding data: ${err}`);
+	// 	}
+	// }
 
-// fetch();
+	//데이타 베이스 배워서 일단 내가 임의로 넣은걸 콘솔로 띄워봤음 (DynamoDB -> Lambda -> API gateWay -> Here)
+	//load database and console it
+	//ComponentDidMount
+	// useEffect(() =>{ async function fetch(){try{
+	// 	const res = await axios.get(`${config.api.invokeUrl}/news`);
+	// 	console.log(res.data);
+	// }catch(err){
+	// 	console.log(`error recieving data: ${err}`);
+	// }}
+	// fetch();
+	// }, []);
 
-// getRecentTen("news");
+	
 
-// getItem("news"); or getItem("news", "2020-02-15")
+
+	
+	// const [data, setData] = useState(dataIn);
+	// console.log(data);
 
 
 // var filterParam = {
