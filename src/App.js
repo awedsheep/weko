@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "./components/views/Navbar/NavBar";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./routes/Home";
@@ -24,6 +24,9 @@ import {
 	updateCommentById
 } from "./apiCall";
 import Footer from "./znew/component/Footer";
+import Facebook from "./components/loginButtons/Facebook"
+import { useGlobalState, setLIState } from "./loginState";
+
 
 const data = {
 	news: [
@@ -836,7 +839,6 @@ const data = {
 // 	};
 // updateCommentById(updateComment);
 
-
 function App() {
 	// var ppp = {
 	// 	tag: "[매니토바]",
@@ -849,9 +851,21 @@ function App() {
 	// 	replies: [],
 	// 	cat: "News"
 	// };
+
+	var isLoggedIn = useGlobalState("isLoggedIn")[0]
+	var email = useGlobalState("date")[0]
+	var name = useGlobalState("name")[0]
+	var picture = useGlobalState("picture")[0]
+	var accessToken = useGlobalState("accessToken")[0]
 	
+	//getcookie and compare with dynamoDB
+
 	return (
+
+
+
 		<div className="warper_all">
+			<Facebook isLoggedIn={isLoggedIn} email={email} name={name} picture={picture} />
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}
 			<BrowserRouter>
 				<div className="header">

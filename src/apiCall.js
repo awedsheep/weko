@@ -181,6 +181,13 @@ export async function updateCommentById(params) {
 	}
 }
 
+export function dateFormatted(){
+	let current_date = new Date();
+	let formatted_date = current_date.getFullYear() + "-" + current_date.getMonth() + "-" + current_date.getDate() + "-" +current_date.getHours() + "-" + current_date.getMinutes() + "-" +current_date.getSeconds() + "-" + current_date.getMilliseconds();
+	formatted_date.substring(-3);
+	return formatted_date;
+}
+
 
 
 //데이타 베이스 배워서 일단 내가 임의로 넣은걸 콘솔로 띄워봤음 (DynamoDB -> Lambda -> API gateWay -> Here)
