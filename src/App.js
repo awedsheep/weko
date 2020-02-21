@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import NavBar from "./components/views/Navbar/NavBar";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./routes/Home";
@@ -24,6 +24,13 @@ import {
 	updateCommentById
 } from "./apiCall";
 import Footer from "./znew/component/Footer";
+
+
+const config = require('./config.json');
+
+
+
+
 
 const data = {
 	news: [
@@ -804,6 +811,7 @@ const data = {
 
 // getItem("news"); or getItem("news", "2020-02-15")
 
+
 // var filterParam = {
 // 	cat: "news",
 // 	expression: "#n >= :v and #n2 <= :v2",
@@ -838,18 +846,7 @@ const data = {
 
 
 function App() {
-	// var ppp = {
-	// 	tag: "[매니토바]",
-	// 	title: "매니토바 소식을 알려드립니다",
-	// 	author: "관리자",
-	// 	date: "2020-01-01-13-32",
-	// 	view: 155,
-	// 	body:
-	// 		"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-	// 	replies: [],
-	// 	cat: "News"
-	// };
-	
+
 	return (
 		<div className="warper_all">
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}
