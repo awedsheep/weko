@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React from "react";
 import NavBar from "./components/views/Navbar/NavBar";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./routes/Home";
@@ -12,20 +12,18 @@ import BuySellView from "./routes/BuySellView";
 import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
-import axios from "axios";
-const config = require('./config.json');
-
-
-
-
-
-
-
-const config = require('./config.json');
-
-
-
-
+import {
+	updateIndex,
+	putPost,
+	getItem,
+	updateItemsById,
+	fetch,
+	getRecentTen,
+	getCatWithFiltered,
+	putComment,
+	updateCommentById
+} from "./apiCall";
+import Footer from "./znew/component/Footer";
 
 const data = {
 	news: [
@@ -784,49 +782,27 @@ const data = {
 // 	content: 13
 // };
 
+// putPost(NewNewsItem);
 
+// const updateParam = {
+// 		cat: "news",
+// 		date: "2020-02-22-10-18-23-000", //Unique String
+// 		changedValue: {
+// 			content:222,
+// 			content2:11
+// 			//... you can add new attribute too
+// 		}
+// 	};
+// updateItemsById(updateParam);
 
-	// handleNews();
-	//Database에 넣고 싶을 때 쓰는 function. //handleNews()를 uncommnet처리 
-	// async function handleNews(){
-	// 	console.log("entered");
-	// 	const NewNewsItem ={
-	// 		id:"11",//Unique String
-	// 		number:133,//integer 
-	// 		tag:"[Winnipeg]",//String
-	// 		title:"NEW CASTLE",//String
-	// 		author:"Shawn Choi",//String
-	// 		date:"2020-02-07",// String
-	// 		view:433,//integer
-	// 		body:"<div>anyString</div>",
-	// 		replies: [{},{},{}] //object
-	// 	}
-	// 	try{
-	// 		await axios.post(`${config.api.invokeUrl}/news/${NewNewsItem.id}`, NewNewsItem);
-	// 	}catch(err){
-	// 		console.log(`error adding data: ${err}`);
-	// 	}
-	// }
+// updateIndex("news");
+// const oneItem = getItem("news", "2020-02-22-10-18-23-000");
 
-	//데이타 베이스 배워서 일단 내가 임의로 넣은걸 콘솔로 띄워봤음 (DynamoDB -> Lambda -> API gateWay -> Here)
-	//load database and console it
-	//ComponentDidMount
-	// useEffect(() =>{ async function fetch(){try{
-	// 	const res = await axios.get(`${config.api.invokeUrl}/news`);
-	// 	console.log(res.data);
-	// }catch(err){
-	// 	console.log(`error recieving data: ${err}`);
-	// }}
-	// fetch();
-	// }, []);
+// fetch();
 
-	
+// getRecentTen("news");
 
-
-	
-	// const [data, setData] = useState(dataIn);
-	// console.log(data);
-
+// getItem("news"); or getItem("news", "2020-02-15")
 
 // var filterParam = {
 // 	cat: "news",
@@ -862,7 +838,18 @@ const data = {
 
 
 function App() {
-
+	// var ppp = {
+	// 	tag: "[매니토바]",
+	// 	title: "매니토바 소식을 알려드립니다",
+	// 	author: "관리자",
+	// 	date: "2020-01-01-13-32",
+	// 	view: 155,
+	// 	body:
+	// 		"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+	// 	replies: [],
+	// 	cat: "News"
+	// };
+	
 	return (
 		<div className="warper_all">
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}
@@ -940,9 +927,6 @@ export default App;
 /*
 data = {
 	news:{
-
 	}
 }
-
-
  */
