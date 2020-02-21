@@ -3,14 +3,21 @@ import BrdItem from "./BrdItem";
 import "./Brd.css";
 import { Icon, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { useGlobalState, setNavName } from "../../state.js";
 
-function Brd({ name, data, cat, handleActiveNav }) {
-	// console.log("Brd");
-	// console.log(data);
-
+function Brd({ name, data, cat }) {
+	const [currentNav] = useGlobalState("currentNav");
+	React.useEffect(() => {
+		var currentURL = window.location.pathname.split("/")[1];
+		if (currentURL !== currentNav) {
+			setNavName(currentURL);
+		}
+	});
 	return (
 		<div className="brd">
-			<span>{name}</span>
+			<span>
+				<Link to={"/" + currentNav}>{name}</Link>
+			</span>
 
 			<div className="brd_head">
 				<div className="brd__number">번호</div>
@@ -25,13 +32,7 @@ function Brd({ name, data, cat, handleActiveNav }) {
 					.reverse()
 					.map(item => {
 						return (
-							<BrdItem
-								name={name}
-								item={item}
-								key={item.number}
-								cat={cat}
-								handleActiveNav={handleActiveNav}
-							/>
+							<BrdItem name={name} item={item} key={item.number} cat={cat} />
 						);
 					})}
 			</div>
@@ -69,8 +70,7 @@ function Brd({ name, data, cat, handleActiveNav }) {
 						to={{
 							pathname: "/" + cat + "/write/",
 							name: name,
-							cat: { cat },
-							handleActiveNav: { handleActiveNav }
+							cat: { cat }
 						}}
 					>
 						<Button animated>

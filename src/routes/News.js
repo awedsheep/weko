@@ -1,17 +1,10 @@
 import React from "react";
 import Brd from "../components/Brds/Brd";
 
-function News({ handleActiveNav, data }) {
-	React.useEffect(() => handleActiveNav("news"), []);
-
+function News({ data }) {
 	return (
 		<div>
-			<Brd
-				data={data}
-				name="캐나다소식"
-				cat="news"
-				handleActiveNav={handleActiveNav}
-			/>
+			<Brd data={data} name="캐나다소식" cat="news" />
 		</div>
 	);
 }

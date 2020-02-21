@@ -1,5 +1,13 @@
 {
+<<<<<<< HEAD
     "api":{
         "invokeUrl": "https://68ggcjtva8.execute-api.ca-central-1.amazonaws.com/news"
     }
 }
+=======
+	"api": {
+		"invokeUrl": "https://aibf2bx72l.execute-api.ca-central-1.amazonaws.com/20200210",
+		"uploadIMG": "https://lfvubgvlia.execute-api.us-east-2.amazonaws.com/prod/uploadimg-weko"
+	}
+}
+>>>>>>> d1d27c86a16834e1f7f89cbeb566e50f98ea4921

@@ -1,16 +1,10 @@
 import React from "react";
 import BrdOpen from "../components/Brds/BrdOpen";
 
-function BuySellView({ data }) {
-	// React.useEffect(() => location.handleActiveNav.handleActiveNav("news"), []);
-	// const item = location.item;
-	// console.log("newsview");
-
-	const num = window.location.pathname.split("/")[3];
-	// console.log(props);
+function BuySellView() {
 	return (
 		<div>
-			<BrdOpen item={data[num - 1]} />
+			<BrdOpen />
 		</div>
 	);
 }

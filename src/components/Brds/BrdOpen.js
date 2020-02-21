@@ -1,29 +1,42 @@
 import React from "react";
 import "./BrdOpen.css";
-import { Button, Comment, Form, Header } from "semantic-ui-react";
+import { Button, Comment, Form, Header, Icon } from "semantic-ui-react";
 import CommentItem from "./CommentItem";
+import { useGlobalState, setNavName } from "../../state.js";
+import { Link } from "react-router-dom";
 
-function Brd_Open({ item }) {
-	console.log(item);
-	//{ item }) {
-	// const aitem = item.item;
-	const aitem = {
+function Brd_Open() {
+	const [currentNav] = useGlobalState("currentNav");
+	React.useEffect(() => {
+		var currentURL = window.location.pathname.split("/")[1];
+		if (currentURL !== currentNav) {
+			setNavName(currentURL);
+		}
+	});
+	var name;
+	switch (currentNav) {
+		case "news":
+			name = "캐나다소식";
+			break;
+		case "forum":
+			name = "자유게시판";
+			break;
+		case "info":
+			name = "정보/팁";
+			break;
+		case "buysell":
+			name = "온라인장터";
+			break;
+	}
+
+	const item = {
 		number: 4,
 		title: "html과 css로 웹사이트를 만들어요",
 		author: "관리자",
 		date: "2020-01-01-13-32",
 		view: 232,
-		replies: [
-			{
-				name: "안서영",
-				body: "예술적으로 아름답네요!",
-				date: "2020-02-25-13:33",
-				replies: []
-			}
-		]
-	};
-	const test =
-		'안녕하세요 Ready to Combat 울프팀 입니다.\
+		body:
+			'안녕하세요 Ready to Combat 울프팀 입니다.\
 	<br />\
 	금일 오전 7시 부터 진행된 정기점검이 완료되어 현재 정상적으로\
 	서버가 오픈되었습니다. <br />\
@@ -48,11 +61,22 @@ function Brd_Open({ item }) {
 	<img\
 		src="https://clipartart.com/images/big-small-clipart-11.png"\
 		height="150px"\
-	></img>';
-	const test2 =
-		'<p><span style="font-family: &quot;Arial Black&quot;;">﻿</span>summernote 2</p>';
+	></img>',
+		replies: [
+			{
+				name: "안서영",
+				body: "예술적으로 아름답네요!",
+				date: "2020-02-25-13:33",
+				replies: []
+			}
+		]
+	};
+
 	return (
-		<div>
+		<div className="open_table">
+			<span className="open_title">
+				<Link to={"/" + currentNav}>{name}</Link>
+			</span>
 			<table cellSpacing="0" border="1" className="tbl_type">
 				<colgroup>
 					<col width="80" />
@@ -64,7 +88,9 @@ function Brd_Open({ item }) {
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="row">제목</th>
+						<th className="table_mobile" scope="row">
+							제목
+						</th>
 						<td className="table__title" colSpan="5">
 							{item.title}
 						</td>
@@ -73,33 +99,36 @@ function Brd_Open({ item }) {
 
 				<tbody>
 					<tr>
-						<th className="table__" scope="row">
+						<th className="table__ table_mobile" scope="row">
 							작성자
 						</th>
 
-						<td className="table__ table__title">{item.author}</td>
+						<td className="table__ table__author">
+							<Icon fitted name="edit outline" color="blue" />
+							시곻나라말사미듕
+						</td>
 
-						<th className="table__" scope="row">
+						<th className="table__ table_mobile" scope="row">
 							작성일
 						</th>
 
 						<td className="table__date table__">
-							{item.date.substring(0, 10)}
+							{/* {item.date.substring(0, 10)} */ item.date.substring(0, 10)}
 						</td>
 
-						<th className="table__" scope="row">
+						<th className="table__ table_mobile" scope="row">
 							조회
 						</th>
 
-						<td className="table__">{item.view}</td>
+						<td className="table__ table_mobile">{item.view}</td>
 					</tr>
 
 					<tr>
 						<td
 							colSpan="6"
 							className="cont"
-							// dangerouslySetInnerHTML={{ __html: item.body }}
-							dangerouslySetInnerHTML={{ __html: test }}
+							dangerouslySetInnerHTML={{ __html: item.body }}
+							// dangerouslySetInnerHTML={{ __html: test }}
 						>
 							{/* // {item.body} */}
 						</td>
@@ -112,7 +141,6 @@ function Brd_Open({ item }) {
 						Comments (0)
 					</Header>
 					{item.replies.map((rep, i) => {
-						console.log(rep.name);
 						return (
 							<CommentItem
 								key={i}

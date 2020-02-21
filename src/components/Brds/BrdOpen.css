@@ -1,3 +1,26 @@
+.open_table {
+	width: 90%;
+	max-width: 1200px;
+	margin: 30px auto;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding-top: 50px;
+	padding-bottom: 50px;
+
+	color: inherit;
+	font-size: 20px;
+	table-layout: fixed;
+	font-family: "KOMACON";
+}
+
+.open_title {
+	display: inline-block;
+	font-size: 40px;
+	padding-bottom: 20px;
+	position: relative;
+	font-family: "BMHANNAAir";
+}
+
 legend {
 	display: none;
 }
@@ -7,17 +30,10 @@ legend {
 	border: 0;
 }
 .tbl_type {
-	width: 90%;
-	max-width: 1200px;
-	margin: 30px auto;
-	margin-bottom: 0;
-	border-top: 1px solid #999;
-	border-bottom: 1px solid #999;
-	color: inherit;
-	font-size: 20px;
-	table-layout: fixed;
-	font-family: "KOMACON";
-
+	width: 100%;
+	border-top: 3px solid cadetblue;
+	/* border-bottom: 1px solid #999; */
+	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 	/* 
 	border-right: solid 1px #999;
 	border-left: solid 1px #999; */
@@ -51,11 +67,6 @@ legend {
 
 .table__date {
 	font-size: 14px;
-}
-@media (max-width: 950px) {
-	.tbl_type col {
-		width: 0;
-	}
 }
 
 /* comment */
@@ -94,4 +105,67 @@ legend {
 
 .tbl_type th {
 	text-align: center !important;
+}
+
+@media (max-width: 950px) {
+	td.table__date.table__ {
+		text-align: right;
+		padding-right: 10px;
+	}
+	.tbl_type {
+		margin-top: 6px;
+	}
+	.tbl_type col {
+		width: 0;
+	}
+	.open_table {
+		width: 100%;
+		/* padding-right: 5px;
+		padding-left: 5px; */
+		font-size: 14px;
+	}
+	.open_title {
+		padding-top: 10px;
+		padding-bottom: 15px;
+		padding-left: 10px;
+		font-size: 35px;
+		margin-top: 0;
+	}
+	.table_mobile {
+		display: none;
+	}
+	.table__title {
+		font-size: 15px;
+	}
+	td.table__.table__author > i {
+		margin-right: 3px !important;
+	}
+
+	.commentName {
+		font-size: 13px;
+		margin-left: 3px;
+	}
+	.commentDate {
+		font-size: 10px;
+	}
+	.commentBody {
+		font-size: 15px;
+	}
+	.commentReply {
+		font-size: 10px;
+	}
+	.at {
+		font-size: 12px;
+	}
+	#root
+		> div
+		> div.container_body
+		> div:nth-child(2)
+		> div
+		> div
+		> div
+		> form
+		> button {
+		font-size: 13px;
+	}
 }

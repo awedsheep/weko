@@ -41,6 +41,9 @@
 	border-bottom: 1px solid #ccc;
 	padding: 15px 0;
 }
+.brd_Item > div {
+	vertical-align: middle !important;
+}
 
 .brd_head > div,
 .brd_body .brd_Item > div {
@@ -49,10 +52,10 @@
 }
 
 .brd .brd__number {
-	width: 10%;
+	width: 7%;
 }
 .brd .brd__title {
-	width: 55%;
+	width: 58%;
 }
 .brd .brd_body .brd__title {
 	text-align: left;
@@ -102,9 +105,100 @@
 	display: inline-block;
 	font-size: 14px;
 	font-weight: 600;
-	margin-right: 5px;
+	margin-right: 10px;
 	color: crimson;
 }
 .brd_item_title {
 	display: inline-block;
+	font-weight: 600;
+}
+
+.brd_item_rep {
+	color: indianred;
+	font-size: 12px !important;
+	padding: 0 !important;
+}
+
+div.brd_body > div > div.brd__author > i {
+	margin-right: 3px !important;
+}
+.views__mobile {
+	display: none !important;
+}
+
+@media (max-width: 950px) {
+	.brd {
+		width: 100%;
+		padding-top: 10px;
+	}
+	.brd > span {
+		margin-left: 10px;
+		font-size: 35px;
+	}
+	.brd__author,
+	.brd__date,
+	.brd__reads {
+		display: inline !important;
+		margin: 0;
+		font-size: 12px;
+	}
+	.brd__author {
+		margin-left: 10px;
+		/* float: left; */
+		width: 40% !important;
+		text-align: left !important;
+	}
+	.brd__reads,
+	.brd__date {
+		/* float: right; */
+		margin-left: 8px;
+		width: 21% !important;
+		text-align: left !important;
+		color: gray;
+	}
+
+	.brd_head {
+		padding: 0;
+	}
+	.brd_head > div {
+		display: none !important;
+	}
+	.brd_Item {
+		/* overflow: hidden; */
+		font-size: 15px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.brd__number {
+		display: none !important;
+	}
+	.brd .brd__title {
+		width: 100%;
+	}
+	.brd_tag {
+		font-size: 12px;
+	}
+	.brd_head {
+		font-weight: 700;
+	}
+	.paging_number {
+		font-size: 15px;
+		margin: 0 4px;
+	}
+	.writeButton {
+		top: -6px;
+		right: 20px;
+	}
+	.paging > div > a > button {
+		padding: 10px !important;
+	}
+	.paging > div > a > button > div {
+		margin-right: 10px !important;
+	}
+	.views__mobile {
+		display: inline !important;
+		font-size: 12px !important;
+	}
 }
