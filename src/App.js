@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import NavBar from "./components/views/Navbar/NavBar";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./routes/Home";
@@ -19,14 +19,11 @@ import {
 	updateItemsById,
 	fetch,
 	getRecentTen,
-	getCatWithFiltered,
-	putComment,
-	updateCommentById
+	getCatWithFiltered
 } from "./apiCall";
-import Footer from "./znew/component/Footer";
-import Facebook from "./components/loginButtons/Facebook"
+import Footer from "./components/Footer";
+import Facebook from "./components/loginButtons/Facebook";
 import { useGlobalState, setLIState } from "./loginState";
-
 
 const data = {
 	news: [
@@ -817,28 +814,6 @@ const data = {
 
 // getCatWithFiltered(filterParam);
 
-//YOU CAN FETCH only entertainment with this method
-// var x = getItem("entertainment", null);
-
-// const NewComment = {
-// 		cat: "newsC",
-// 		date: "2020-02-13-07-18-23-500",
-// 		parent: {cat: "newsC", date:"2020-02-13-07-18-23-001"},
-// 		children: [{date:"2020-02-13-07-18-23-002"},{date:"2020-02-13-07-18-23-003"}]
-// 	};
-
-// putComment(NewComment);
-
-
-// const updateComment = {
-// 		cat: "newsC",
-// 		date: "2020-02-13-07-18-23-500", 
-// 		changedValue: {
-// 			children: [{date:"2020-02-13-07-18-23-002"},{date:"2020-02-13-07-18-23-003"}]
-// 		}
-// 	};
-// updateCommentById(updateComment);
-
 function App() {
 	// var ppp = {
 	// 	tag: "[매니토바]",
@@ -852,20 +827,21 @@ function App() {
 	// 	cat: "News"
 	// };
 
-	var isLoggedIn = useGlobalState("isLoggedIn")[0]
-	var email = useGlobalState("date")[0]
-	var name = useGlobalState("name")[0]
-	var picture = useGlobalState("picture")[0]
-	var accessToken = useGlobalState("accessToken")[0]
-	
+	var isLoggedIn = useGlobalState("isLoggedIn")[0];
+	var email = useGlobalState("date")[0];
+	var name = useGlobalState("name")[0];
+	var picture = useGlobalState("picture")[0];
+	var accessToken = useGlobalState("accessToken")[0];
+
 	//getcookie and compare with dynamoDB
-
 	return (
-
-
-
 		<div className="warper_all">
-			<Facebook isLoggedIn={isLoggedIn} email={email} name={name} picture={picture} />
+			<Facebook
+				isLoggedIn={isLoggedIn}
+				email={email}
+				name={name}
+				picture={picture}
+			/>
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}
 			<BrowserRouter>
 				<div className="header">
@@ -941,6 +917,9 @@ export default App;
 /*
 data = {
 	news:{
+
 	}
 }
+
+
  */

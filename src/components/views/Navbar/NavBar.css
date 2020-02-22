@@ -63,12 +63,15 @@ a {
 .navBar {
 	height: 100px;
 	border-bottom: 1px solid #ddd;
+	position: relative;
 }
 
 .navBar header {
 	width: 90%;
 	max-width: 1200px;
 	margin: 0 auto;
+	height: 100px;
+	overflow: hidden;
 }
 
 .title_letter {
@@ -124,35 +127,61 @@ a {
 }
 .container_body_right,
 .container_body_left {
-	width: 20%;
+	width: 250px;
 	height: 99%;
 	/* background: cornflowerblue; */
-	position: absolute;
+	/* position: absolute; */
 }
 .container_body_left > img {
 	float: right;
 }
 .container_body_left > img,
 .container_body_right > img {
-	height: 49%;
+	/* height: 49%; */
+	width: 100%;
 	margin-bottom: 3%;
 }
 .container_body_left {
-	left: -21%;
+	float: left;
+	margin-left: -25%;
 	top: 10px;
 }
 .container_body_right {
-	right: -21%;
+	float: right;
+	margin-right: -25%;
 	top: 10px;
+}
+@media (max-width: 1500px) {
+	.container_body_left {
+		margin-left: -32%;
+		width: 230px;
+	}
+	.container_body_right {
+		margin-right: -32%;
+		width: 230px;
+	}
+}
+@media (max-width: 1200px) {
+	.container_body_left {
+		margin-left: -32%;
+		width: 210px;
+	}
+	.container_body_right {
+		margin-right: -32%;
+		width: 210px;
+	}
 }
 
 .container_body {
 	position: relative;
 	max-width: 1200px;
 	margin: auto;
-	background: #f5f6f7;
+	/* background: #f5f6f7; */
 	padding-top: 20px;
 	width: 60%;
+}
+.__footer {
+	clear: both;
 }
 
 .text_editor {
@@ -173,7 +202,7 @@ a {
 	color: black !important;
 }
 
-.footer {
+/* .footer {
 	position: relative;
 
 	bottom: 0;
@@ -186,7 +215,7 @@ a {
 	background: #ccc;
 	text-align: center;
 	font-size: 15px;
-}
+} */
 
 @media (max-width: 950px) {
 	.menu {
@@ -197,9 +226,6 @@ a {
 		position: absolute;
 		top: 37px;
 		right: 2%;
-	}
-	.menu.transition.visible > div > a {
-		/* font-size: 15px; */
 	}
 }
 
@@ -334,9 +360,32 @@ body > div.ui.page.modals.dimmer.transition.visible.active > div > div {
 		width: auto !important;
 		/* max-width: 100% !important; */
 	}
+	.container_body_right,
+	.container_body_left {
+		display: none;
+	}
+	.container_body {
+		/* display: inline-block; */
+		width: 100%;
+	}
+	.ant-carousel,
+	.logo_sub {
+		display: none;
+	}
+	.boarder_warp {
+		height: 100% !important;
+	}
 }
 
-/* summernote css */
+/*############################################################################################
+##############################################################################################
+##############################################################################################
+
+					summernote css 
+
+##############################################################################################
+##############################################################################################
+##############################################################################################*/
 
 .note-popover.popover {
 	display: none;

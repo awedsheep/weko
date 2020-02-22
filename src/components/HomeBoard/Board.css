@@ -34,11 +34,11 @@
 }
 .board_list ul li {
 	/* margin-top: 10px; */
-	padding-top: 10px;
+	/* padding-top: 10px;
 	padding-right: 30px;
 	padding-left: 30px;
 	font-size: 0;
-	padding-bottom: 3px;
+	padding-bottom: 3px; */
 	border-bottom: 1px solid #ddd;
 }
 .board_list ul li:hover {
@@ -54,7 +54,7 @@
 }
 
 .board_list a {
-	width: 80%;
+	width: 100%;
 	font-size: 18px;
 }
 
@@ -74,23 +74,40 @@
 }
 .board_item_title {
 	display: inline-block;
-	max-width: 100%;
+	width: 100%;
 }
 
 .board_title {
+	margin-top: 10px;
 	display: block;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	/* text-overflow: ellipsis; */
+	/* white-space: nowrap; */
 	overflow: hidden;
 	font-family: "KOMACON";
+	height: 100px;
+	margin-right: 2px;
+	margin-left: 2px;
+}
+.board_tag span {
+	display: inline;
+	margin-left: 3px;
+	/* margin-left: -20px; */
+}
+.board_img {
+	float: left;
+}
+.board_img img {
+	width: 100px;
+	margin: 5px;
 }
 
 .board_item_num_rep,
 .board_item_new {
-	float: right;
+	/* float: right; */
+	display: inline;
 	margin-left: 3px;
 	color: indianred;
-	font-size: 12px;
+	font-size: 15px;
 }
 
 /* .board_item_new {
@@ -124,5 +141,10 @@
 	}
 	.board_tag {
 		font-size: 12px;
+	}
+
+	.board_title {
+		font-size: 20px;
+		padding-left: 10px;
 	}
 }

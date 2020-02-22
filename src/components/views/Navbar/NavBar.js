@@ -26,28 +26,24 @@ function NavBar() {
 							<img src={logo} alt="logo" />
 						</Link>
 					</div>
-					<span className="logo_nav">
+					<span className="logo_nav logo_sub">
 						<img
 							src="https://inspiration.ignitemag.ca/wp-content/uploads/2019/02/Winnipeg-Banner.jpg"
 							alt="logo"
 						/>
 					</span>
-					<span className="logo_nav">
+					<span className="logo_nav logo_sub">
 						<img
 							src="https://wearepentagon.com/pentaWordpress/wp-content/uploads/2017/07/Korea_big_header.jpg"
 							alt="logo"
 						/>
 					</span>
-					<span className="logo_nav">
+					<span className="logo_nav logo_sub">
 						<img
 							src="https://blog.hotelscombined.com/wp-content/uploads/2018/02/Korea-Cherry-Blossoms-1.jpg"
 							alt="logo"
 						/>
 					</span>
-				</header>
-			</nav>
-			<nav className="navBar">
-				<header>
 					<div className="mobile_dropdown">
 						<Dropdown
 							// text="Menu"
@@ -72,7 +68,10 @@ function NavBar() {
 							</Dropdown.Menu>
 						</Dropdown>
 					</div>
-
+				</header>
+			</nav>
+			<nav className="navBar logo_sub">
+				<header>
 					<ul className="menu">
 						<li className={currentNav === "news" ? "active" : ""}>
 							<Link to="/news">
