@@ -10,7 +10,6 @@ import { useGlobalState, setLIState } from "../../loginState";
 
 function Facebook({ isLoggedIn, email, name, picture }) {
     let fbContent;
-    
     function componentClicked() { console.log('clicked') }
     function responseFacebook(res) {
         if (res.status !== "not_authorized") {
@@ -20,10 +19,10 @@ function Facebook({ isLoggedIn, email, name, picture }) {
                 cat: "loginInfo",
                 date: res.email,
                 accessToken: res.accessToken,
-                isLoggedIn: true,
                 userId: res.userId,
                 name: res.name,
-                picture: res.picture.data.url
+                picture: res.picture.data.url,
+                isAuth: true
             };
             
             setLIState(params);

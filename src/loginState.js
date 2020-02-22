@@ -1,25 +1,32 @@
 import { createGlobalState } from "react-hooks-global-state";
 import { updateItemsById } from "./apiCall";
 
+const initialState = {
 
-const { setGlobalState, useGlobalState } = createGlobalState({
-	cat: "loginInfo",
-	date: "email",
-	accessToken:"",
-	isLoggedIn: false,
-	userId: "",
-	name: "",
-	picture: ""
-});
+    state:{
+        cat: "loginInfo",
+        date: "email",
+        accessToken:"",
+        userId: "",
+        name: "",
+        picture: "",
+        isAuth: false
+    }
+	
+};
+const { setGlobalState, useGlobalState } = createGlobalState(initialState);
+
+
+
 
 export function setLIState(param) {
     
-    setGlobalState("date", param.date);
-    setGlobalState("accessToken", param.accessToken);
-    setGlobalState("isLoggedIn", param.isLoggedIn);
-    setGlobalState("userId", param.userId);
-    setGlobalState("name", param.name);
-    setGlobalState("picture", param.picture);
+    setGlobalState("state", (v) => ({...v, date: param.date, accessToken: param.accessToken, userId:param.userId, name:param.name, picture:param.picture, isAuth:param.isAuth}));
+    // setGlobalState("accessToken", param.accessToken);
+    // setGlobalState("isLoggedIn", param.isLoggedIn);
+    // setGlobalState("userId", param.userId);
+    // setGlobalState("name", param.name);
+    // setGlobalState("picture", param.picture);
     
     let newparam = {
         cat: param.cat,
@@ -29,10 +36,9 @@ export function setLIState(param) {
                 name: param.name,
                 userId: param.userId,
                 picture:param.picture,
-                isLoggedIn:true
         }
     }
-    console.log(param)
+    // console.log(param)
     updateItemsById(newparam);
 }
 

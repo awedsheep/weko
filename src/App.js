@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "./components/views/Navbar/NavBar";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./routes/Home";
@@ -24,6 +24,7 @@ import {
 import Footer from "./components/Footer";
 import Facebook from "./components/loginButtons/Facebook";
 import { useGlobalState, setLIState } from "./loginState";
+import Cookies from 'js-cookie';
 
 const data = {
 	news: [
@@ -827,11 +828,39 @@ function App() {
 	// 	cat: "News"
 	// };
 
-	var isLoggedIn = useGlobalState("isLoggedIn")[0];
-	var email = useGlobalState("date")[0];
-	var name = useGlobalState("name")[0];
-	var picture = useGlobalState("picture")[0];
-	var accessToken = useGlobalState("accessToken")[0];
+	
+	const [login, setlogin] = useGlobalState("state");
+	var isLoggedIn = login.isAuth;
+	var email = login.date;
+	var name = login.name;
+	var picture = login.picture;
+
+	async function checkIsAuth(){
+		var clientToken = Cookies.get("accessToken");
+		if (clientToken) {
+			var filterParam = {
+				cat: "loginInfo",
+				expression: "#n >= :v",
+				names: { "#n": "accessToken" },
+				values: { ":v": clientToken }
+			}
+			
+			 var dbToken = await getCatWithFiltered(filterParam);
+			 if(dbToken){
+				if (!dbToken.length) {
+					setlogin({cat:"loginInfo", date: dbToken.date, accessToken: dbToken.accessToken, userId:dbToken.userId, name:dbToken.name, picture:dbToken.picture, isAuth:true });
+				}
+			 }
+		}
+	}
+
+	useEffect(() => {
+		checkIsAuth();
+	}, [])
+
+
+
+
 
 	//getcookie and compare with dynamoDB
 	return (

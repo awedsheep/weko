@@ -136,8 +136,8 @@ export async function getCatWithFiltered(filterParam) {
 	try {
 		var res = await axios.post(`${config.api.invokeUrl}/post/filtered`, filterParam);
 
-		console.log(res.data);
-		return res.data[0].index;
+		console.log(res.data[0]);
+		return res.data[0];
 	} catch (err) {
 		console.log(`error adding data: ${err}`);
 	}
