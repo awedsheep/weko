@@ -13,7 +13,7 @@ function Facebook({ isLoggedIn, email, name, picture }) {
     function componentClicked() { console.log('clicked') }
     function responseFacebook(res) {
         if (res.status !== "not_authorized") {
-           console.log(res)
+        //    console.log(res)
             Cookies.set('accessToken', res.accessToken, { expires: res.expiresIn / 60 / 60 / 24 })
             const params = {
                 cat: "loginInfo",
@@ -30,7 +30,8 @@ function Facebook({ isLoggedIn, email, name, picture }) {
     }
 
     if (isLoggedIn) {
-    fbContent = <div><img src={picture} /><h3>{name}</h3>{" " + email}</div>
+    // fbContent = <div><img src={picture} /><h3>{name}</h3>{" " + email}</div>
+    fbContent = null;
     } else {
         fbContent = <FacebookLogin
             appId="198926918154851"
@@ -38,7 +39,7 @@ function Facebook({ isLoggedIn, email, name, picture }) {
             fields="name,email,picture"
             onClick={componentClicked}
             callback={responseFacebook}
-            cookie={true}
+    
         />
     }
     return (

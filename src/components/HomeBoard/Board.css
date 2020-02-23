@@ -95,10 +95,16 @@
 }
 .board_img {
 	float: left;
+	width: 100px;
+	height: 100px;
+	overflow:hidden;
+
 }
 .board_img img {
-	width: 100px;
+	min-width: 100px;
+	height: 100px;
 	margin: 5px;
+	
 }
 
 .board_item_num_rep,

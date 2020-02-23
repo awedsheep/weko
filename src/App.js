@@ -25,6 +25,10 @@ import Footer from "./components/Footer";
 import Facebook from "./components/loginButtons/Facebook";
 import { useGlobalState, setLIState } from "./loginState";
 import Cookies from 'js-cookie';
+import Google from "./components/loginButtons/Google";
+import SuccessLoginInfo from "./components/loginButtons/SuccessLoginInfo"
+import LogoutButton from "./components/loginButtons/LogoutButton";
+
 
 const data = {
 	news: [
@@ -834,6 +838,7 @@ function App() {
 	var email = login.date;
 	var name = login.name;
 	var picture = login.picture;
+	
 
 	async function checkIsAuth(){
 		var clientToken = Cookies.get("accessToken");
@@ -858,19 +863,21 @@ function App() {
 		checkIsAuth();
 	}, [])
 
-
+console.log(isLoggedIn)
 
 
 
 	//getcookie and compare with dynamoDB
 	return (
 		<div className="warper_all">
-			<Facebook
+			{
+			isLoggedIn? <div><SuccessLoginInfo isLoggedIn={isLoggedIn}  email={email} name={name} picture={picture} /> <LogoutButton /></div>: 
+			<div><Facebook
 				isLoggedIn={isLoggedIn}
-				email={email}
-				name={name}
-				picture={picture}
-			/>
+			/> 
+			<Google isLoggedIn={isLoggedIn} /></div>
+			}
+			
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}
 			<BrowserRouter>
 				<div className="header">

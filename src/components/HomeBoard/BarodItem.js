@@ -1,9 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ItemDescription } from "semantic-ui-react";
 
 function BoardItem({ num, item, cat }) {
 	// console.log(item);
 	let srcc = "https://picsum.photos/1" + (10 + Math.floor(Math.random() * 500));
+	if(item.body.includes("src")){
+		
+		var splitted = item.body.split(`src="`)[1].split(`"`)[0].replace("..", "http://www.etoland.co.kr")
+		if(!splitted.includes("http")){
+			splitted = "http://www.etoland.co.kr" + splitted;
+		}
+		console.log(splitted)
+		srcc = splitted;
+	}
+
 	return (
 		<li>
 			<Link
