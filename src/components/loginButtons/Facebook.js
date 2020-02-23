@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import FacebookLogin from 'react-facebook-login'
 import Cookies from 'js-cookie'
-import { putPost } from '../../apiCall'
-import App from '../../App'
-import { useGlobalState, setLIState } from "../../loginState";
+import { setLIState } from "../../loginState";
 
 
 

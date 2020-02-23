@@ -13,17 +13,11 @@ import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
 import {
-	updateIndex,
-	putPost,
-	getItem,
-	updateItemsById,
-	fetch,
-	getRecentTen,
-	getCatWithFiltered
+	getCatWithFiltered, getItemByNumber
 } from "./apiCall";
 import Footer from "./components/Footer";
 import Facebook from "./components/loginButtons/Facebook";
-import { useGlobalState, setLIState } from "./loginState";
+import { useGlobalState} from "./loginState";
 import Cookies from 'js-cookie';
 import Google from "./components/loginButtons/Google";
 import SuccessLoginInfo from "./components/loginButtons/SuccessLoginInfo"
@@ -818,6 +812,8 @@ const data = {
 // }
 
 // getCatWithFiltered(filterParam);
+
+// getItemByNumber("news", "2020-02-22-20-25-05-422", 50)
 
 function App() {
 	// var ppp = {

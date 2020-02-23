@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import GoogleLogin from 'react-google-login'
 import Cookies from 'js-cookie'
-import { putPost } from '../../apiCall'
-import App from '../../App'
-import { useGlobalState, setLIState } from "../../loginState";
+import { setLIState } from "../../loginState";
 
 
 
 
-function Google({ isLoggedIn, email, name, picture }) {
+function Google({ isLoggedIn}) {
     let fbContent;
 
     function responseGoogle(res) {
@@ -33,7 +31,6 @@ function Google({ isLoggedIn, email, name, picture }) {
     function responseGoogleError(res) { console.log(res) }
 
     if (isLoggedIn) {
-        // fbContent = <div><img src={picture} /><h3>{name}</h3>{" " + email}</div>
         fbContent = null;
     } else {
         fbContent = <GoogleLogin
