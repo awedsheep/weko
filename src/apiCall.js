@@ -158,7 +158,7 @@ export async function getCatWithFiltered(filterParam) {
 }
 
 // const NewComment = {
-// 		cat: "newsC",
+// 		cat: "rootPostInfo", // "news/2020-02-13"
 // 		date: "2020-02-13-07-18-23-000",
 // 		parent: {cat: "newsC", date:"2020-02-13-07-18-23-001"},
 // 		children: [] //this is array

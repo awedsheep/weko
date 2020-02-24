@@ -22,6 +22,7 @@ import Cookies from 'js-cookie';
 import Google from "./components/loginButtons/Google";
 import SuccessLoginInfo from "./components/loginButtons/SuccessLoginInfo"
 import LogoutButton from "./components/loginButtons/LogoutButton";
+import Instagram from "./components/loginButtons/Instagram";
 
 
 const data = {
@@ -859,7 +860,7 @@ function App() {
 		checkIsAuth();
 	}, [])
 
-console.log(isLoggedIn)
+// console.log(isLoggedIn)
 
 
 
@@ -871,7 +872,8 @@ console.log(isLoggedIn)
 			<div><Facebook
 				isLoggedIn={isLoggedIn}
 			/> 
-			<Google isLoggedIn={isLoggedIn} /></div>
+			<Google isLoggedIn={isLoggedIn} />
+			</div>
 			}
 			
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}

@@ -4,19 +4,23 @@ import "./Board.css";
 import more from "../images/more.png";
 import { Link } from "react-router-dom";
 import { getRecentTen } from "../../apiCall";
-import { Image, Item } from "semantic-ui-react";
+
 
 function Board({ newestID, name, cat, data }) {
-	const [tenItems, setTenItems] = useState([]);
+	const [tenItems, setTenItems] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+	const [loaded, setLoaded] = useState(false);
 
 	async function fetchTenItems() {
 		if(cat=="forum"){
 			const res = await getRecentTen("entertainment");
 			setTenItems(res);
+			setLoaded(true);
 		}else if(cat == "news"){
 			const res = await getRecentTen("news")
 			setTenItems(res)
+			setLoaded(true);
 		}
+		
 	}
 	// console.log(data);
 	useEffect(() => {
@@ -40,7 +44,7 @@ function Board({ newestID, name, cat, data }) {
 						.slice(0)
 						.reverse()
 						.map((item, i) => {
-							return <BoardItem key={i} num={i} item={item} cat={cat} />;
+							return <BoardItem key={i} num={i} item={item} cat={cat} loaded={loaded} setLoaded={setLoaded} />;
 						})}
 				</ul>
 			</div>

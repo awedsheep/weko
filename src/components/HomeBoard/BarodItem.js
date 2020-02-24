@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ItemDescription } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
 
-function BoardItem({ num, item, cat }) {
+function BoardItem({ num, item, cat, loaded, setLoaded }) {
+
+	if(!loaded){
+		return (<li><Icon loading name='spinner' /></li>)
+	}
+
+
 	// console.log(item);
 	let srcc = "https://picsum.photos/1" + (10 + Math.floor(Math.random() * 500));
 	if(item.body.includes("src")){
@@ -14,7 +20,7 @@ function BoardItem({ num, item, cat }) {
 		// console.log(splitted)
 		srcc = splitted;
 	}
-
+	
 	return (
 		<li>
 			<Link
@@ -25,7 +31,7 @@ function BoardItem({ num, item, cat }) {
 			>
 				<div className="board_item_title">
 					<div className="board_img">
-						<img src={srcc} />
+						<img alt="" src={srcc} />
 					</div>
 					<div className="board_title">
 						<div className="board_tag">
@@ -33,7 +39,7 @@ function BoardItem({ num, item, cat }) {
 							<span>{item.date.substring(0, 10)}</span>
 						</div>
 						<br />
-						<br />
+						
 						{item.title}
 						<div className="board_item_num_rep">
 							<img

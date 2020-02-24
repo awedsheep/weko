@@ -47,6 +47,10 @@
 .board_list ul li:first-child {
 	margin-top: 0;
 }
+.board_list > ul > li >i{
+	font-size: 60px;
+	margin: 40px;
+}
 .board_list a,
 .board_list span {
 	display: inline-block;
@@ -85,8 +89,11 @@
 	overflow: hidden;
 	font-family: "KOMACON";
 	height: 100px;
-	margin-right: 2px;
+	margin-right: 6px;
 	margin-left: 2px;
+}
+.board_tag{
+	margin-top: -2px;
 }
 .board_tag span {
 	display: inline;
@@ -98,12 +105,16 @@
 	width: 100px;
 	height: 100px;
 	overflow:hidden;
+	margin-left: 5px;
+	margin-top: 6px;
+	margin-right: 5px;
 
 }
 .board_img img {
 	min-width: 100px;
 	height: 100px;
-	margin: 5px;
+	/* margin: 5px; */
+	
 	
 }
 
@@ -146,11 +157,14 @@
 		display: none;
 	}
 	.board_tag {
-		font-size: 12px;
+		font-size: 15px;
 	}
 
 	.board_title {
-		font-size: 20px;
+		font-size: 17px;
 		padding-left: 10px;
+	}
+	.board_img {
+		margin-left: -3px;
 	}
 }
