@@ -10,8 +10,8 @@ import Facebook from "../../loginButtons/Facebook";
 
 import Cookies from "js-cookie";
 import Google from "../../loginButtons/Google";
-import SuccessLoginInfo from "../../loginButtons/SuccessLoginInfo";
-import LogoutButton from "../../loginButtons/LogoutButton";
+// import SuccessLoginInfo from "../../loginButtons/SuccessLoginInfo";
+// import LogoutButton from "../../loginButtons/LogoutButton";
 import { getCatWithFiltered } from "../../../apiCall";
 
 function NavBar() {
@@ -20,9 +20,9 @@ function NavBar() {
 
 	const [login, setlogin] = useGlobalState("state");
 	var isLoggedIn = login.isAuth;
-	var email = login.date;
-	var name = login.name;
-	var picture = login.picture;
+	// var email = login.date;
+	// var name = login.name;
+	// var picture = login.picture;
 
 	async function checkIsAuth() {
 		var clientToken = Cookies.get("accessToken");
@@ -116,12 +116,6 @@ function NavBar() {
 					/>
 					<div className="third_party_div">
 						<div className="facebook_div">
-							<Icon
-								name="facebook f"
-								size="big"
-								className="facebook_icon__"
-								inverted
-							></Icon>
 							<Facebook isLoggedIn={isLoggedIn} />
 						</div>
 						<div className="google_div">
@@ -188,11 +182,11 @@ function NavBar() {
 										정보/팁
 									</Link>
 								</Dropdown.Item>
-								<Dropdown.Item>
-									<a onClick={() => setLoginOpen(true)}>
-										<Icon name="user" size="large" />
-										로그인
-									</a>
+								<Dropdown.Item onClick={() => setLoginOpen(true)}>
+									{/* <span as="a" > */}
+									<Icon name="user" size="large" />
+									로그인
+									{/* </span> */}
 									{/* <Button.Group icon>
 										<Button color="black" onClick={() => setLoginOpen(true)}>
 											<Icon name="user" size="large" />
@@ -242,10 +236,8 @@ function NavBar() {
 						</li>
 						<li>
 							<a onClick={() => setLoginOpen(true)}>
-								<span>
-									<Icon name="user" />
-									로그인
-								</span>
+								<Icon name="user" />
+								로그인
 							</a>
 						</li>
 					</ul>

@@ -1,17 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Board from "./Board";
 import "./BoardsWrap.css";
-import { getItem } from "../../apiCall";
 
 let res;
 function BoardsWrap({ data }) {
-	async function fetchNewstID() {
-		res = await getItem("News", -1);
-	}
-	useEffect(() => {
-		// fetchNewstID();
-		// console.log(res);
-	}, []);
 	return (
 		<div className="boarder_warp">
 			<div>

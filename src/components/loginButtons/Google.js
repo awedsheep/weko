@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import GoogleLogin from "react-google-login";
 import Cookies from "js-cookie";
-import { putPost } from "../../apiCall";
-import App from "../../App";
-import { useGlobalState, setLIState } from "../../state";
+import { setLIState } from "../../state";
 
 function Google({ isLoggedIn, email, name, picture }) {
 	let fbContent;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import NavBar from "./components/views/Navbar/NavBar";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./routes/Home";
@@ -818,60 +818,11 @@ function App() {
 	// 	cat: "News"
 	// };
 
-<<<<<<< HEAD
-	
-	const [login, setlogin] = useGlobalState("state");
-	var isLoggedIn = login.isAuth;
-	var email = login.date;
-	var name = login.name;
-	var picture = login.picture;
-	
-
-	async function checkIsAuth(){
-		var clientToken = Cookies.get("accessToken");
-		if (clientToken) {
-			var filterParam = {
-				cat: "loginInfo",
-				expression: "#n >= :v",
-				names: { "#n": "accessToken" },
-				values: { ":v": clientToken }
-			}
-			
-			 var dbToken = await getCatWithFiltered(filterParam);
-			 if(dbToken){
-				if (!dbToken.length) {
-					setlogin({cat:"loginInfo", date: dbToken.date, accessToken: dbToken.accessToken, userId:dbToken.userId, name:dbToken.name, picture:dbToken.picture, isAuth:true });
-				}
-			 }
-		}
-	}
-
-	useEffect(() => {
-		checkIsAuth();
-	}, [])
-
-// console.log(isLoggedIn)
-
-
-=======
 	// console.log(isLoggedIn);
->>>>>>> 6953d525f94b11e272b922739cb53843ce50eb43
 
 	//getcookie and compare with dynamoDB
 	return (
 		<div className="warper_all">
-<<<<<<< HEAD
-			{
-			isLoggedIn? <div><SuccessLoginInfo isLoggedIn={isLoggedIn}  email={email} name={name} picture={picture} /> <LogoutButton /></div>: 
-			<div><Facebook
-				isLoggedIn={isLoggedIn}
-			/> 
-			<Google isLoggedIn={isLoggedIn} />
-			</div>
-			}
-			
-=======
->>>>>>> 6953d525f94b11e272b922739cb53843ce50eb43
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}
 			<BrowserRouter>
 				<div className="header">
@@ -880,12 +831,24 @@ function App() {
 				<div className="container_body_warp">
 					<div className="container_body">
 						<div className="container_body_left">
-							<img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad1-160x600.jpeg" />
-							<img src="https://www.epa.gov/sites/production/files/styles/large/public/2018-10/english_national_web_banner_160x600.jpg" />
+							<img
+								alt=""
+								src="https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad1-160x600.jpeg"
+							/>
+							<img
+								alt=""
+								src="https://www.epa.gov/sites/production/files/styles/large/public/2018-10/english_national_web_banner_160x600.jpg"
+							/>
 						</div>
 						<div className="container_body_right">
-							<img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad2-160x600.jpeg" />
-							<img src="https://i.pinimg.com/236x/1f/28/55/1f28550a0ec49a99458041dfab3ee9b1--recent-earthquakes-the-game.jpg" />
+							<img
+								alt=""
+								src="https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad2-160x600.jpeg"
+							/>
+							<img
+								alt=""
+								src="https://i.pinimg.com/236x/1f/28/55/1f28550a0ec49a99458041dfab3ee9b1--recent-earthquakes-the-game.jpg"
+							/>
 						</div>
 						<Banner1 />
 						<Route path="/" exact={true} render={() => <Home data={data} />} />

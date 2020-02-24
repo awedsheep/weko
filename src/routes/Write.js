@@ -90,39 +90,40 @@ function Write({ location }) {
 				},
 				"base64"
 			);
+			return null;
 		});
 	};
 
 	const onFocus = () => {
 		setIsFocus(true);
 	};
-	const oc = async () => {
-		let res;
-		const imgInfo = {
-			action: "delete",
-			names: []
-		};
-		//find which is deleted
-		for (var i = 0; i < numIMG; i++) {
-			if (!editorHtml.includes("news_img_test" + i + ".jpeg")) {
-				imgInfo.names.push("news_img_test" + i + ".jpeg");
-			}
-		}
-		console.log(numIMG);
-		console.log(imgInfo);
-		if (imgInfo.names.length !== 0) {
-			try {
-				res = await axios.post(`${config.api.uploadIMG}`, imgInfo, {
-					headers: {
-						"Content-Type": "application/json"
-					}
-				});
-				console.log(res);
-			} catch (err) {
-				console.log(`error adding data: ${err}`);
-			}
-		}
-	};
+	// const oc = async () => {
+	// 	let res;
+	// 	const imgInfo = {
+	// 		action: "delete",
+	// 		names: []
+	// 	};
+	// 	//find which is deleted
+	// 	for (var i = 0; i < numIMG; i++) {
+	// 		if (!editorHtml.includes("news_img_test" + i + ".jpeg")) {
+	// 			imgInfo.names.push("news_img_test" + i + ".jpeg");
+	// 		}
+	// 	}
+	// 	console.log(numIMG);
+	// 	console.log(imgInfo);
+	// 	if (imgInfo.names.length !== 0) {
+	// 		try {
+	// 			res = await axios.post(`${config.api.uploadIMG}`, imgInfo, {
+	// 				headers: {
+	// 					"Content-Type": "application/json"
+	// 				}
+	// 			});
+	// 			console.log(res);
+	// 		} catch (err) {
+	// 			console.log(`error adding data: ${err}`);
+	// 		}
+	// 	}
+	// };
 
 	return (
 		<div className={"_editor" + (isFocus ? " is-focus" : "")}>

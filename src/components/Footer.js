@@ -1,17 +1,5 @@
 import React from "react";
-import {
-	Container,
-	Divider,
-	Dropdown,
-	Grid,
-	Header,
-	Icon,
-	Image,
-	List,
-	Menu,
-	Segment,
-	Visibility
-} from "semantic-ui-react";
+import { Container, Grid, Header, List, Segment } from "semantic-ui-react";
 export default function Footer() {
 	return (
 		<div className="__footer">

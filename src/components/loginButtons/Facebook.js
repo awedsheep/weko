@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import FacebookLogin from "react-facebook-login";
 import Cookies from "js-cookie";
-import { putPost } from "../../apiCall";
-import App from "../../App";
-import { useGlobalState, setLIState } from "../../state";
+import { setLIState } from "../../state";
+import { Icon } from "semantic-ui-react";
 
 function Facebook({ isLoggedIn, email, name, picture }) {
 	let fbContent;
@@ -41,6 +40,11 @@ function Facebook({ isLoggedIn, email, name, picture }) {
 				fields="name,email,picture"
 				onClick={componentClicked}
 				callback={responseFacebook}
+				icon={
+					<div className="facebook_icon__">
+						<Icon name="facebook f" size="big" inverted />
+					</div>
+				}
 			/>
 		);
 	}
