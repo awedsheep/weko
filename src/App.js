@@ -12,23 +12,8 @@ import BuySellView from "./routes/BuySellView";
 import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
-import {
-	updateIndex,
-	putPost,
-	getItem,
-	updateItemsById,
-	fetch,
-	getRecentTen,
-	getCatWithFiltered
-} from "./apiCall";
-import Footer from "./components/Footer";
-import Facebook from "./components/loginButtons/Facebook";
-import { useGlobalState, setLIState } from "./loginState";
-import Cookies from 'js-cookie';
-import Google from "./components/loginButtons/Google";
-import SuccessLoginInfo from "./components/loginButtons/SuccessLoginInfo"
-import LogoutButton from "./components/loginButtons/LogoutButton";
 
+import Footer from "./components/Footer";
 
 const data = {
 	news: [
@@ -832,52 +817,11 @@ function App() {
 	// 	cat: "News"
 	// };
 
-	
-	const [login, setlogin] = useGlobalState("state");
-	var isLoggedIn = login.isAuth;
-	var email = login.date;
-	var name = login.name;
-	var picture = login.picture;
-	
-
-	async function checkIsAuth(){
-		var clientToken = Cookies.get("accessToken");
-		if (clientToken) {
-			var filterParam = {
-				cat: "loginInfo",
-				expression: "#n >= :v",
-				names: { "#n": "accessToken" },
-				values: { ":v": clientToken }
-			}
-			
-			 var dbToken = await getCatWithFiltered(filterParam);
-			 if(dbToken){
-				if (!dbToken.length) {
-					setlogin({cat:"loginInfo", date: dbToken.date, accessToken: dbToken.accessToken, userId:dbToken.userId, name:dbToken.name, picture:dbToken.picture, isAuth:true });
-				}
-			 }
-		}
-	}
-
-	useEffect(() => {
-		checkIsAuth();
-	}, [])
-
-console.log(isLoggedIn)
-
-
+	// console.log(isLoggedIn);
 
 	//getcookie and compare with dynamoDB
 	return (
 		<div className="warper_all">
-			{
-			isLoggedIn? <div><SuccessLoginInfo isLoggedIn={isLoggedIn}  email={email} name={name} picture={picture} /> <LogoutButton /></div>: 
-			<div><Facebook
-				isLoggedIn={isLoggedIn}
-			/> 
-			<Google isLoggedIn={isLoggedIn} /></div>
-			}
-			
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}
 			<BrowserRouter>
 				<div className="header">

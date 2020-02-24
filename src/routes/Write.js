@@ -133,7 +133,8 @@ function Write({ location }) {
 				/>
 				{/* Component JSX */}
 			</React.Fragment>
-			<Modal open={modalOpen} basic size="small">
+			<Modal open={modalOpen} basic size="small" className="modal_loading">
+				{/* <Modal open={true} basic size="small" className="modal_loading"> */}
 				{/* <Header icon="browser" content="Cookies policy" /> */}
 				<Modal.Content>
 					<span>
