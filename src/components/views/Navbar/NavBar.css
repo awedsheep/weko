@@ -52,8 +52,14 @@ a {
 	> div
 	> div.menu.transition.visible {
 	position: absolute !important;
-	left: -60px !important;
+	left: -120px !important;
 	top: 20px !important;
+}
+.menu.transition.visible .item {
+	font-size: 18px !important;
+}
+.menu.transition.visible i {
+	margin-right: 15px;
 }
 #root > div > div.header > nav > header > div.mobile_dropdown > div,
 #root > div > div.header > nav > header > div.mobile_dropdown > div > i {
@@ -103,9 +109,10 @@ a {
 .menu li {
 	display: inline-block;
 	margin-left: 30px;
+	margin-top: 7px;
 	list-style: none;
 	font-size: 18px;
-	width: 100px;
+	/* width: 130px; */
 }
 .menu li:first-child {
 	margin-left: 0;
@@ -316,13 +323,22 @@ a {
 .is-focus .note-placeholder {
 	display: none !important;
 }
+body > div.ui.page.modals.dimmer.transition.visible.active > div.modal_login {
+	position: relative;
+	height: 350px;
+	width: 410px;
+	margin: auto;
+}
 
-body > div.ui.page.modals.dimmer.transition.visible.active > div {
+body > div.ui.page.modals.dimmer.transition.visible.active > div.modal_loading {
 	width: 100%;
 	text-align: center;
 	position: relative;
 }
-body > div.ui.page.modals.dimmer.transition.visible.active > div > div {
+body
+	> div.ui.page.modals.dimmer.transition.visible.active
+	> div.modal_loading
+	> div {
 	display: inline-block;
 	width: auto;
 	margin: 0 auto;
@@ -342,6 +358,49 @@ body > div.ui.page.modals.dimmer.transition.visible.active > div > div {
 	> img {
 	/* width: auto !important; */
 	max-width: 100% !important;
+}
+.third_party_div {
+	width: 330px;
+	height: 53px;
+	position: relative;
+}
+.third_party_div > div {
+	display: inline-block;
+}
+
+.facebook_icon__ {
+	position: absolute;
+	bottom: 5px;
+	left: 28px;
+	z-index: 10;
+	pointer-events: none;
+}
+.facebook_div > div > span > button {
+	width: 140px !important;
+	height: 40px !important;
+	padding: 0 !important;
+	padding-left: 20px !important;
+	font-size: 10px;
+	border: 1px cadetblue solid;
+	border-radius: 3px !important;
+	position: absolute;
+	bottom: 0px;
+	left: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.google_div {
+	margin-top: 12px;
+	position: absolute;
+	bottom: 0px;
+	right: -20px;
+}
+
+.password_text__,
+.email_text__ {
+	width: 100%;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	font-size: 18px !important;
 }
 
 @media (max-width: 950px) {

@@ -12,18 +12,7 @@ import BuySellView from "./routes/BuySellView";
 import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
-import {
-	getCatWithFiltered, getItemByNumber
-} from "./apiCall";
 import Footer from "./components/Footer";
-import Facebook from "./components/loginButtons/Facebook";
-import { useGlobalState} from "./loginState";
-import Cookies from 'js-cookie';
-import Google from "./components/loginButtons/Google";
-import SuccessLoginInfo from "./components/loginButtons/SuccessLoginInfo"
-import LogoutButton from "./components/loginButtons/LogoutButton";
-import Instagram from "./components/loginButtons/Instagram";
-
 
 const data = {
 	news: [
@@ -829,6 +818,7 @@ function App() {
 	// 	cat: "News"
 	// };
 
+<<<<<<< HEAD
 	
 	const [login, setlogin] = useGlobalState("state");
 	var isLoggedIn = login.isAuth;
@@ -863,10 +853,14 @@ function App() {
 // console.log(isLoggedIn)
 
 
+=======
+	// console.log(isLoggedIn);
+>>>>>>> 6953d525f94b11e272b922739cb53843ce50eb43
 
 	//getcookie and compare with dynamoDB
 	return (
 		<div className="warper_all">
+<<<<<<< HEAD
 			{
 			isLoggedIn? <div><SuccessLoginInfo isLoggedIn={isLoggedIn}  email={email} name={name} picture={picture} /> <LogoutButton /></div>: 
 			<div><Facebook
@@ -876,6 +870,8 @@ function App() {
 			</div>
 			}
 			
+=======
+>>>>>>> 6953d525f94b11e272b922739cb53843ce50eb43
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}
 			<BrowserRouter>
 				<div className="header">
