@@ -11,7 +11,7 @@ function BoardItem({ num, item, cat }) {
 		if(!splitted.includes("http")){
 			splitted = "http://www.etoland.co.kr" + splitted;
 		}
-		console.log(splitted)
+		// console.log(splitted)
 		srcc = splitted;
 	}
 

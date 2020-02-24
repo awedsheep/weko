@@ -12,7 +12,6 @@ import BuySellView from "./routes/BuySellView";
 import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
-
 import Footer from "./components/Footer";
 
 const data = {
@@ -803,6 +802,8 @@ const data = {
 // }
 
 // getCatWithFiltered(filterParam);
+
+// getItemByNumber("news", "2020-02-22-20-25-05-422", 50)
 
 function App() {
 	// var ppp = {

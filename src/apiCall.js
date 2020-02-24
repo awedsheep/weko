@@ -51,6 +51,20 @@ export async function updateIndex(cat) {
 	}
 }
 
+export async function getItemByNumber(cat, date, num){
+	console.log(`getting ${num} of Items form ${cat}`)
+	var myparam = {cat,date,num}
+	try {
+		const res = await axios.post(
+			`${config.api.invokeUrl}/post/getlist`, myparam
+		);
+		console.log(res);
+		return res.data;
+	} catch (err) {
+		console.log(`error adding data: ${err}`);
+	}
+}
+
 // getRecentTen("News");
 //need to compare with scan.... 2querycalls vs scan
 export async function getRecentTen(cat) {
@@ -58,7 +72,7 @@ export async function getRecentTen(cat) {
 		const res = await axios.get(
 			`${config.api.invokeUrl}/post/${cat}`
 		);
-		console.log(res);
+		// console.log(res);
 		return res.data;
 	} catch (err) {
 		console.log(`error adding data: ${err}`);

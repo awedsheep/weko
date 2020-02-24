@@ -12,6 +12,9 @@
 	table-layout: fixed;
 	font-family: "KOMACON";
 }
+.open_table img{
+	max-width: 100%;
+}
 
 .open_title {
 	display: inline-block;
@@ -108,6 +111,9 @@ legend {
 }
 
 @media (max-width: 950px) {
+	.open_table img {
+		min-width:50% !important
+	}
 	td.table__date.table__ {
 		text-align: right;
 		padding-right: 10px;
