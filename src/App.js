@@ -13,6 +13,7 @@ import InfoTipsView from "./routes/InfoTipsView";
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
 import Footer from "./components/Footer";
+import { putUser, authenticateUser } from "./apiCall";
 
 const data = {
 	news: [
@@ -804,6 +805,16 @@ const data = {
 // getCatWithFiltered(filterParam);
 
 // getItemByNumber("news", "2020-02-22-20-25-05-422", 50)
+
+
+
+// const NewUser = {
+// 		id: "ckswn211@hotmail.com", 
+// 		pass: "12345678"
+// 	};
+
+// var newUserHashCode = putUser(NewUser); //need to await
+// var isSuccessLogginIn = authenticateUser(NewUser);
 
 function App() {
 	// var ppp = {

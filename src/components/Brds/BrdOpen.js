@@ -1,19 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import "./BrdOpen.css";
 import { Button, Comment, Form, Header, Icon } from "semantic-ui-react";
 import CommentItem from "./CommentItem";
 import { useGlobalState, setNavName } from "../../state.js";
 import { Link } from "react-router-dom";
+import { getItem } from "../../apiCall"
 
-function Brd_Open({item}) {
+
+
+function Brd_Open({ item }) {
 	const [currentNav] = useGlobalState("currentNav");
+	const [replies, setReplies] = useState([]);
 	React.useEffect(() => {
-	
+
 		var currentURL = window.location.pathname.split("/")[1];
 		if (currentURL !== currentNav) {
-			setNavName(currentURL);
+			//setNavName(currentURL);
 		}
-	});
+		fetchComment()
+	}, []);
+
+	async function fetchComment() {
+		const commentList = await getItem(item.cat + "_" + item.date);
+		commentList.sort(function (a, b) {
+			return a.id.localeCompare(b.id)
+		})
+		var comments = [];
+		var current = comments;
+		var indexC = 0;
+		var x = 1;
+		while (indexC < commentList.length) {
+		
+			var len = commentList[indexC].id.split("-").length
+			current.push(commentList[indexC])
+			current[indexC]["replies"] = [];
+			console.log(current)
+			if(x <= len){
+				if(current.replies){
+					current = current.replies[current.replies.length-1]
+				}
+				x = len;
+			}
+			// if (len === x) {
+				
+				
+			// } else {
+			// 	x++;
+			// }
+			indexC++;
+		}
+		console.log("object")
+		console.log(commentList)
+		setReplies(commentList);
+	}
+
+
 	var name;
 	switch (currentNav) {
 		case "news":
@@ -29,7 +70,7 @@ function Brd_Open({item}) {
 			name = "온라인장터";
 			break;
 		default:
-		break;
+			break;
 	}
 
 	// 	replies: [
@@ -40,10 +81,7 @@ function Brd_Open({item}) {
 	// 			replies: []
 	// 		}
 	// 	]
-	if(item.replies === undefined){
-		item.replies = [];}
 
-	
 	return (
 		<div className="open_table">
 			<span className="open_title">
@@ -100,7 +138,7 @@ function Brd_Open({item}) {
 							colSpan="6"
 							className="cont"
 							dangerouslySetInnerHTML={{ __html: item.body }}
-							// dangerouslySetInnerHTML={{ __html: test }}
+						// dangerouslySetInnerHTML={{ __html: test }}
 						>
 							{/* // {item.body} */}
 						</td>
@@ -112,14 +150,14 @@ function Brd_Open({item}) {
 					<Header as="h3" dividing>
 						Comments (0)
 					</Header>
-					{item.replies.map((rep, i) => {
+					{replies.map((rep, i) => {
 						return (
 							<CommentItem
 								key={i}
 								num={i}
-								name={rep.name}
+								name={"cjChoi"}
 								date={rep.date}
-								body={rep.body}
+								body={rep.comment}
 								replies={rep.replies}
 							/>
 						);

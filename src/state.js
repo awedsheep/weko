@@ -1,9 +1,10 @@
 import { createGlobalState } from "react-hooks-global-state";
-import { updateItemsById } from "./apiCall";
+import { updateItemsById, getItem } from "./apiCall";
 
 const initialState = {
 	currentNav: "home",
 	name: "",
+	loginOpen:false,
 	state: {
 		cat: "loginInfo",
 		date: "email",
@@ -56,6 +57,10 @@ export function setLIState(param) {
 			picture: param.picture
 		}
 	};
+
+	
+
+		
 	// console.log(param)
 	updateItemsById(newparam);
 }

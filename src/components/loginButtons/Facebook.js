@@ -1,16 +1,20 @@
 import React from "react";
 import FacebookLogin from "react-facebook-login";
 import Cookies from "js-cookie";
-import { setLIState } from "../../state";
+import { setLIState, useGlobalState } from "../../state";
 import { Icon } from "semantic-ui-react";
 
+
 function Facebook({ isLoggedIn, email, name, picture }) {
+	
+	const [loginOpen, setLoginOpen] = useGlobalState("loginOpen");
 	let fbContent;
 	function componentClicked() {
 		console.log("clicked");
 	}
 	function responseFacebook(res) {
 		if (res.status !== "not_authorized") {
+			setLoginOpen(false);
 			//    console.log(res)
 			Cookies.set("accessToken", res.accessToken, {
 				expires: res.expiresIn / 60 / 60 / 24

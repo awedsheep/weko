@@ -93,7 +93,7 @@ export async function getItem(cat, date) {
 			res = await axios.get(`${config.api.invokeUrl}/post/${cat}/${date}`);
 		}
 		console.log(res.data);
-		return res.data[0].index;
+		return res.data;
 	} catch (err) {
 		console.log(`error adding data: ${err}`);
 	}
@@ -173,8 +173,38 @@ export async function putComment(newParams) {
 		console.log(`error adding data: ${err}`);
 	}
 
-	updateIndex(newParams.cat);
 }
+
+// const NewUser = {
+// 		id: "ckswn111@hotmail.com", 
+// 		pass: "123456789"
+// 	};
+
+
+export async function putUser(newUserParam) {
+	console.log("Creating New user...");
+	try {
+		var data = await axios.post(`${config.api.invokeUrl}/login`, newUserParam);
+		console.log("hash: " + data.data)
+		return data.data;
+	} catch (err) {
+		console.log(`error adding data: ${err}`);
+	}
+}
+
+export async function authenticateUser(userParam) {
+	console.log("authenticate a user...");
+	try {
+		var data = await axios.patch(`${config.api.invokeUrl}/login`, userParam);
+		console.log("success logging in? " + data.data)
+		return data.data;
+	} catch (err) {
+		console.log(`error adding data: ${err}`);
+	}
+}
+
+
+
 
 export async function updateCommentById(params) {
 	console.log("attempting to start update parameters");
@@ -201,6 +231,8 @@ export function dateFormatted(){
 	formatted_date.substring(-3);
 	return formatted_date;
 }
+
+
 
 
 

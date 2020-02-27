@@ -13,10 +13,11 @@ import Google from "../../loginButtons/Google";
 // import SuccessLoginInfo from "../../loginButtons/SuccessLoginInfo";
 // import LogoutButton from "../../loginButtons/LogoutButton";
 import { getCatWithFiltered } from "../../../apiCall";
+import LogoutButton from "../../loginButtons/LogoutButton";
 
 function NavBar() {
 	const [currentNav] = useGlobalState("currentNav");
-	const [loginOpen, setLoginOpen] = useState(false);
+	const [loginOpen, setLoginOpen] = useGlobalState("loginOpen");
 
 	const [login, setlogin] = useGlobalState("state");
 	var isLoggedIn = login.isAuth;
@@ -72,6 +73,7 @@ function NavBar() {
 					
 				</div>
 			)} */}
+
 			<Modal
 				size="mini"
 				open={loginOpen}
@@ -81,48 +83,57 @@ function NavBar() {
 			>
 				<Modal.Header>
 					<Icon name="user" size="big" />
-					로그인
+					{isLoggedIn ? "로그아웃" : "로그인"}
 				</Modal.Header>
-				<Modal.Content>
-					<Input
-						iconPosition="left"
-						placeholder="Email"
-						className="email_text__"
-					>
-						<Icon name="at" />
-						<input />
-					</Input>
-					<br />
-					<Input
-						iconPosition="left"
-						placeholder="Password"
-						type="password"
-						className="password_text__"
-					>
-						<Icon name="key" />
-						<input />
-					</Input>
-				</Modal.Content>
-				<Modal.Actions>
-					<Button primary basic>
-						비밀번호찾기
+
+				{isLoggedIn ? <LogoutButton /> :
+					<>
+						<Modal.Content>
+							<Input
+								iconPosition="left"
+								placeholder="Email"
+								className="email_text__"
+							>
+								<Icon name="at" />
+								<input />
+							</Input>
+							<br />
+							<Input
+								iconPosition="left"
+								placeholder="Password"
+								type="password"
+								className="password_text__"
+							>
+								<Icon name="key" />
+								<input />
+							</Input>
+						</Modal.Content>
+						<Modal.Actions>
+							<Button primary basic>
+								비밀번호찾기
 					</Button>
-					<Button primary>회원가입</Button>
-					<Button
-						positive
-						icon="checkmark"
-						labelPosition="right"
-						content="로그인"
-					/>
-					<div className="third_party_div">
-						<div className="facebook_div">
-							<Facebook isLoggedIn={isLoggedIn} />
-						</div>
-						<div className="google_div">
-							<Google isLoggedIn={isLoggedIn} />
-						</div>
-					</div>
-				</Modal.Actions>
+							<Button primary>회원가입</Button>
+							<Button
+								positive
+								icon="checkmark"
+								labelPosition="right"
+								content="로그인"
+							/>
+							<div className="third_party_div">
+								<div className="facebook_div">
+									<Facebook isLoggedIn={isLoggedIn} />
+								</div>
+								<div className="google_div">
+									<Google isLoggedIn={isLoggedIn} />
+								</div>
+							</div>
+						</Modal.Actions>
+
+					</>
+				}
+
+
+
 			</Modal>
 			<nav className="navBar">
 				<header>
@@ -185,7 +196,7 @@ function NavBar() {
 								<Dropdown.Item onClick={() => setLoginOpen(true)}>
 									{/* <span as="a" > */}
 									<Icon name="user" size="large" />
-									로그인
+									{isLoggedIn? "로그아웃" : "로그인"}
 									{/* </span> */}
 									{/* <Button.Group icon>
 										<Button color="black" onClick={() => setLoginOpen(true)}>
@@ -237,7 +248,7 @@ function NavBar() {
 						<li>
 							<a onClick={() => setLoginOpen(true)}>
 								<Icon name="user" />
-								로그인
+								{isLoggedIn? "로그아웃" : "로그인"}
 							</a>
 						</li>
 					</ul>

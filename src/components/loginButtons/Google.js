@@ -1,11 +1,11 @@
 import React from "react";
 import GoogleLogin from "react-google-login";
 import Cookies from "js-cookie";
-import { setLIState } from "../../state";
+import { setLIState, useGlobalState } from "../../state";
 
 function Google({ isLoggedIn, email, name, picture }) {
 	let fbContent;
-
+	const [loginOpen, setLoginOpen] = useGlobalState("loginOpen");
 	function responseGoogle(res) {
 		// console.log(res)
 		Cookies.set("accessToken", res.accessToken, {
@@ -20,6 +20,7 @@ function Google({ isLoggedIn, email, name, picture }) {
 			picture: res.profileObj.imageUrl,
 			isAuth: true
 		};
+		setLoginOpen(false);
 		// console.log(params)
 
 		setLIState(params);

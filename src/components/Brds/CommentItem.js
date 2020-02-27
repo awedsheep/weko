@@ -43,7 +43,7 @@ function CommentItem({ num, name, date, body, replies, at }) {
 					</Comment.Action>
 				</Comment.Actions>
 			</Comment.Content>
-			{replies.length > 0 && <Comment.Group>{rereplies}</Comment.Group>}
+			{/* {replies.length > 0 && <Comment.Group>{rereplies}</Comment.Group>} */}
 		</Comment>
 	);
 }
