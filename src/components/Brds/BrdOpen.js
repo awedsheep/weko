@@ -4,56 +4,47 @@ import { Button, Comment, Form, Header, Icon } from "semantic-ui-react";
 import CommentItem from "./CommentItem";
 import { useGlobalState, setNavName } from "../../state.js";
 import { Link } from "react-router-dom";
-import { getItem } from "../../apiCall"
-
-
+import { getItem } from "../../apiCall";
 
 function Brd_Open({ item }) {
 	const [currentNav] = useGlobalState("currentNav");
 	const [replies, setReplies] = useState([]);
 	React.useEffect(() => {
-
 		var currentURL = window.location.pathname.split("/")[1];
 		if (currentURL !== currentNav) {
 			//setNavName(currentURL);
 		}
-		fetchComment()
+		fetchComment();
 	}, []);
 
 	async function fetchComment() {
-		const commentList = await getItem(item.cat + "_" + item.date);
-		commentList.sort(function (a, b) {
-			return a.id.localeCompare(b.id)
-		})
+		var commentList = await getItem(item.cat + "_" + item.date);
+		commentList.sort(function(a, b) {
+			return a.id.localeCompare(b.id);
+		});
 		var comments = [];
-		var current = comments;
+		var current;
 		var indexC = 0;
 		var x = 1;
+
 		while (indexC < commentList.length) {
-		
-			var len = commentList[indexC].id.split("-").length
-			current.push(commentList[indexC])
-			current[indexC]["replies"] = [];
-			console.log(current)
-			if(x <= len){
-				if(current.replies){
-					current = current.replies[current.replies.length-1]
+			current = comments;
+			var splited = commentList[indexC].id.split("-");
+			var len = splited.length;
+
+			for (var i = 1; i <= len; i++) {
+				var num = parseInt(splited[i - 1]);
+				if (i == len) {
+					commentList[indexC]["replies"] = [];
+					current.push(commentList[indexC]);
+				} else if (len != 1) {
+					current = current[num - 1]["replies"];
 				}
-				x = len;
 			}
-			// if (len === x) {
-				
-				
-			// } else {
-			// 	x++;
-			// }
 			indexC++;
 		}
-		console.log("object")
-		console.log(commentList)
-		setReplies(commentList);
+		setReplies(comments);
 	}
-
 
 	var name;
 	switch (currentNav) {
@@ -138,7 +129,7 @@ function Brd_Open({ item }) {
 							colSpan="6"
 							className="cont"
 							dangerouslySetInnerHTML={{ __html: item.body }}
-						// dangerouslySetInnerHTML={{ __html: test }}
+							// dangerouslySetInnerHTML={{ __html: test }}
 						>
 							{/* // {item.body} */}
 						</td>
