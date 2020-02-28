@@ -6,7 +6,7 @@ export default function LogoutButton() {
 	const [state, setState] = useGlobalState("state");
 	return (
 		<div>
-			<p><h4>정말 로그아웃 하시겠습니까?</h4></p>
+			<p>정말 로그아웃 하시겠습니까?</p>
 			<button onClick={eraseCookie}>Log Out</button>
 		</div>
 	);

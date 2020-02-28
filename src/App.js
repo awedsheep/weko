@@ -841,7 +841,7 @@ function App() {
 				</div>
 				<div className="container_body_warp">
 					<div className="container_body">
-						<div className="container_body_left">
+						{/* <div className="container_body_left">
 							<img
 								alt=""
 								src="https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad1-160x600.jpeg"
@@ -850,8 +850,8 @@ function App() {
 								alt=""
 								src="https://www.epa.gov/sites/production/files/styles/large/public/2018-10/english_national_web_banner_160x600.jpg"
 							/>
-						</div>
-						<div className="container_body_right">
+						</div> */}
+						{/* <div className="container_body_right">
 							<img
 								alt=""
 								src="https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad2-160x600.jpeg"
@@ -860,7 +860,7 @@ function App() {
 								alt=""
 								src="https://i.pinimg.com/236x/1f/28/55/1f28550a0ec49a99458041dfab3ee9b1--recent-earthquakes-the-game.jpg"
 							/>
-						</div>
+						</div> */}
 						<Banner1 />
 						<Route path="/" exact={true} render={() => <Home data={data} />} />
 						<Route

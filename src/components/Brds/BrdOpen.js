@@ -84,7 +84,7 @@ function Brd_Open({ item }) {
 			date: dateFormatted(),
 			name: "ms.G",
 			comment: commentBody,
-			id: replies.length + 1
+			id: String(replies.length + 1),
 		};
 
 		putComment(commentParam);
@@ -163,12 +163,15 @@ function Brd_Open({ item }) {
 					{replies.map((rep, i) => {
 						return (
 							<CommentItem
+								cat = {rep.cat}
 								key={i}
 								num={i}
+								id = {rep.id}
 								name={rep.name}
 								date={rep.date}
 								body={rep.comment}
 								replies={rep.replies}
+								setReplies={setReplies}
 							/>
 						);
 					})}
