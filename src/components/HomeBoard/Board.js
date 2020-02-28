@@ -29,6 +29,7 @@ function Board({ newestID, name, cat, data }) {
 	return (
 		<div className="board">
 			<div className="board_header">
+	
 				<Link to={"/" + cat} className="board__title">
 					{name}
 				</Link>

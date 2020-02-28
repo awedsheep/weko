@@ -125,10 +125,16 @@ a {
 	color: black !important;
 }
 
+/* .menu .left {
+	float:left;
+} */
+
 .menu {
 	margin-top: 5px;
 	float: right;
 }
+
+
 .container_body_warp {
 	/* display: inline-block; */
 }

@@ -861,7 +861,7 @@ function App() {
 								src="https://i.pinimg.com/236x/1f/28/55/1f28550a0ec49a99458041dfab3ee9b1--recent-earthquakes-the-game.jpg"
 							/>
 						</div> */}
-						<Banner1 />
+						{/* <Banner1 /> */}
 						<Route path="/" exact={true} render={() => <Home data={data} />} />
 						<Route
 							path="/news"

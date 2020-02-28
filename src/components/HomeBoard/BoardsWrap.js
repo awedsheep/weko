@@ -2,8 +2,12 @@ import React from "react";
 import Board from "./Board";
 import "./BoardsWrap.css";
 
+
+
 let res;
 function BoardsWrap({ data }) {
+	
+	
 	return (
 		<div className="boarder_warp">
 			<div>
