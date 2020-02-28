@@ -4,11 +4,12 @@ import { Button, Comment, Form, Header, Icon } from "semantic-ui-react";
 import CommentItem from "./CommentItem";
 import { useGlobalState, setNavName } from "../../state.js";
 import { Link } from "react-router-dom";
-import { getItem } from "../../apiCall";
+import { getItem, putComment, dateFormatted } from "../../apiCall";
 
 function Brd_Open({ item }) {
 	const [currentNav] = useGlobalState("currentNav");
 	const [replies, setReplies] = useState([]);
+	const [commentBody, setCommentBody] = useState("");
 	React.useEffect(() => {
 		var currentURL = window.location.pathname.split("/")[1];
 		if (currentURL !== currentNav) {
@@ -72,6 +73,24 @@ function Brd_Open({ item }) {
 	// 			replies: []
 	// 		}
 	// 	]
+
+	function submitHandler(e) {
+		e.preventDefault();
+
+		// console.log(date);
+		// var body = commentBody.replace(/(?:\r\n|\r|\n)/g, "<br/>");
+		var commentParam = {
+			cat: item.cat + "-" + item.date,
+			date: dateFormatted(),
+			name: "ms.G",
+			comment: commentBody,
+			id: replies.length + 1
+		};
+
+		putComment(commentParam);
+		commentParam.replies = [];
+		setReplies([...replies, commentParam]);
+	}
 
 	return (
 		<div className="open_table">
@@ -146,7 +165,7 @@ function Brd_Open({ item }) {
 							<CommentItem
 								key={i}
 								num={i}
-								name={"cjChoi"}
+								name={rep.name}
 								date={rep.date}
 								body={rep.comment}
 								replies={rep.replies}
@@ -154,13 +173,14 @@ function Brd_Open({ item }) {
 						);
 					})}
 
-					<Form reply>
-						<Form.TextArea />
+					<Form reply onSubmit={submitHandler}>
+						<Form.TextArea onChange={e => setCommentBody(e.target.value)} />
 						<Button
 							content="Add Comment"
 							labelPosition="left"
 							icon="edit"
 							primary
+							type="submit"
 						/>
 					</Form>
 				</Comment.Group>

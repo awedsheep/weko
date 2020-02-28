@@ -11,7 +11,7 @@ function CommentItem({ num, name, date, body, replies, at }) {
 					key={num + "" + i}
 					name={rep.name}
 					date={rep.date}
-					body={rep.body}
+					body={rep.comment}
 					replies={rep.replies}
 					at={name}
 				/>
@@ -32,7 +32,7 @@ function CommentItem({ num, name, date, body, replies, at }) {
 					</div>
 				</Comment.Metadata>
 				<Comment.Text>
-					<span className="commentBody">
+					<span className="commentBody" style={{ whiteSpace: "pre-line" }}>
 						{at && <span className="at">@{at}</span>}
 						{body}
 					</span>
