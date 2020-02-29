@@ -864,10 +864,10 @@ function App() {
 						{/* <Banner1 /> */}
 						<Route path="/" exact={true} render={() => <Home data={data} />} />
 						<Route
-							path="/news"
+							path="/news/:page"
 							exact={true}
-							render={() => <News data={data.news} />}
-						/>
+							component={News} />
+						
 						<Route
 							path="/news/view"
 							exact={true}
@@ -876,17 +876,17 @@ function App() {
 						<Route path="/news/view/:id" component={NewsView} />
 						{/* <Route path="/news/view/:id" component={NewsView} /> */}
 						<Route
-							path="/forum"
+							path="/forum/:page"
 							exact={true}
 							render={() => <Forum data={data.forum} />}
 						/>
 						<Route
 							path="/forum/view/:id"
 							// exact={true}
-							render={() => <ForumView data={data.forum} />}
-						/>
+							component={ForumView} />
+						
 						<Route
-							path="/buysell"
+							path="/buysell/:page"
 							exact={true}
 							render={() => <BuySell data={data.buysell} />}
 						/>
@@ -896,7 +896,7 @@ function App() {
 							render={() => <BuySellView data={data.buysell} />}
 						/>
 						<Route
-							path="/info"
+							path="/info/:page"
 							exact={true}
 							render={() => <InfoTips data={data.info} />}
 						/>

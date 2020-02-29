@@ -275,25 +275,25 @@ function NavBar() {
 						>
 							<Dropdown.Menu>
 								<Dropdown.Item>
-									<Link to="/news">
+									<Link to="/news/1">
 										<Icon name="bullhorn" size="large" />
 										캐나다소식
 									</Link>
 								</Dropdown.Item>
 								<Dropdown.Item>
-									<Link to="/forum">
+									<Link to="/forum/1">
 										<Icon name="coffee" size="large" />
 										자유게시판
 									</Link>
 								</Dropdown.Item>
 								<Dropdown.Item>
-									<Link to="/buysell">
+									<Link to="/buysell/1">
 										<Icon name="shopping basket" size="large" />
 										온라인장터
 									</Link>
 								</Dropdown.Item>
 								<Dropdown.Item>
-									<Link to="/info">
+									<Link to="/info/1">
 										<Icon name="info circle" size="large" />
 										정보/팁
 									</Link>
@@ -330,7 +330,7 @@ function NavBar() {
 						}
 
 						<li className={currentNav === "news" ? "active" : ""}>
-							<Link to="/news">
+							<Link to="/news/1">
 								<span>
 									<Icon name="bullhorn" />
 									캐나다소식
@@ -338,7 +338,7 @@ function NavBar() {
 							</Link>
 						</li>
 						<li className={currentNav === "forum" ? "active" : ""}>
-							<Link to="/forum">
+							<Link to="/forum/1">
 								<span>
 									<Icon name="coffee" />
 									자유게시판
@@ -346,7 +346,7 @@ function NavBar() {
 							</Link>
 						</li>
 						<li className={currentNav === "buysell" ? "active" : ""}>
-							<Link to="/buysell">
+							<Link to="/buysell/1">
 								<span>
 									<Icon name="shopping basket" />
 									온라인장터
@@ -354,7 +354,7 @@ function NavBar() {
 							</Link>
 						</li>
 						<li className={currentNav === "info" ? "active" : ""}>
-							<Link to="/info">
+							<Link to="/info/1">
 								<span>
 									<Icon name="info circle" />
 									정보/팁

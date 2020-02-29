@@ -67,7 +67,7 @@ export async function getItemByNumber(cat, date, num){
 
 // getRecentTen("News");
 //need to compare with scan.... 2querycalls vs scan
-export async function getRecentTen(cat) {
+export async function getRecentTwenty(cat) {
 	try {
 		const res = await axios.get(
 			`${config.api.invokeUrl}/post/${cat}`

@@ -6,10 +6,12 @@ import { useGlobalState, setNavName } from "../../state.js";
 import { Link } from "react-router-dom";
 import { getItem, putComment, dateFormatted } from "../../apiCall";
 
-function Brd_Open({ item }) {
+function Brd_Open(params) {
 	const [currentNav] = useGlobalState("currentNav");
 	const [replies, setReplies] = useState([]);
 	const [commentBody, setCommentBody] = useState("");
+	console.log(params)
+	var item = params.item
 	React.useEffect(() => {
 		var currentURL = window.location.pathname.split("/")[1];
 		if (currentURL !== currentNav) {
@@ -19,7 +21,7 @@ function Brd_Open({ item }) {
 	}, []);
 
 	async function fetchComment() {
-		var commentList = await getItem(item.cat + "_" + item.date);
+		var commentList = await getItem(item.cat + "-" + item.date);
 		commentList.sort(function(a, b) {
 			return a.id.localeCompare(b.id);
 		});
@@ -65,6 +67,8 @@ function Brd_Open({ item }) {
 			break;
 	}
 
+	
+
 	// 	replies: [
 	// 		{
 	// 			name: "안서영",
@@ -102,9 +106,9 @@ function Brd_Open({ item }) {
 					<col width="80" />
 					<col />
 					<col width="80" />
-					<col width="100" />
+					<col width="150" />
 					<col width="50" />
-					<col width="80" />
+					<col width="120" />
 				</colgroup>
 				<thead>
 					<tr>
@@ -125,7 +129,7 @@ function Brd_Open({ item }) {
 
 						<td className="table__ table__author">
 							<Icon fitted name="edit outline" color="blue" />
-							시곻나라말사미듕
+							{item.name}
 						</td>
 
 						<th className="table__ table_mobile" scope="row">
@@ -133,7 +137,7 @@ function Brd_Open({ item }) {
 						</th>
 
 						<td className="table__date table__">
-							{/* {item.date.substring(0, 10)} */ item.date.substring(0, 10)}
+							{item.date.substring(0, 16)}
 						</td>
 
 						<th className="table__ table_mobile" scope="row">

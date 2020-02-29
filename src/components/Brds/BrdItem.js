@@ -7,13 +7,14 @@ function Brd_Item({ item, cat, name }) {
 	c += Math.floor(Math.random() * 10);
 	c += Math.floor(Math.random() * 10);
 	c += Math.floor(Math.random() * 10);
-
+	// console.log("brdien")
+	// console.log(item)
 	return (
 		<div className="brd_Item">
 			<div className="brd__title">
 				<Link
 					to={{
-						pathname: "/" + cat + "/view/" + item.number,
+						pathname: "/" + cat + "/view/" + "777",
 						item: { item },
 						name: { name }
 					}}

@@ -1,15 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Icon } from "semantic-ui-react";
-
-function BoardItem({ num, item, cat, loaded, setLoaded }) {
-
-	if(!loaded){
-		return (<li><Icon loading name='spinner' /></li>)
-	}
 
 
-	// console.log(item);
+function BoardItem({ num, item, cat }) {
+
+
+
+	console.log(item);
 	let srcc = "https://picsum.photos/1" + (10 + Math.floor(Math.random() * 500));
 	if(item.body.includes("src")){
 		
