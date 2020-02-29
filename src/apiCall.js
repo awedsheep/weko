@@ -58,7 +58,7 @@ export async function getItemByNumber(cat, date, num){
 		const res = await axios.post(
 			`${config.api.invokeUrl}/post/getlist`, myparam
 		);
-		console.log(res);
+		// console.log(res);
 		return res.data;
 	} catch (err) {
 		console.log(`error adding data: ${err}`);

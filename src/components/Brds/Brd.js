@@ -1,18 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BrdItem from "./BrdItem";
 import "./Brd.css";
 import { Icon, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { useGlobalState, setNavName } from "../../state.js";
+import { getItemByNumber } from "../../apiCall";
+
 
 function Brd({ name, data, cat }) {
 	const [currentNav] = useGlobalState("currentNav");
+	const [postings, setPostings] = useGlobalState(cat);
+
 	React.useEffect(() => {
 		var currentURL = window.location.pathname.split("/")[1];
 		if (currentURL !== currentNav) {
 			setNavName(currentURL);
 		}
 	});
+
+	async function fetchFourtyMore(){
+		
+		if(postings.length >= 10 & postings.length < 50){
+			var lastItem = postings[0]; // this might be changed if DB sorting Date is different 
+			var fourtyMoreItems = await getItemByNumber(cat, lastItem.date, 40)
+			setPostings([...postings, ...fourtyMoreItems])
+		}else{
+			var fiftyMoreItems = await getItemByNumber(cat, null, 50)
+			setPostings([...fiftyMoreItems])
+		}
+		
+	}
+
+	useEffect(() => {
+		fetchFourtyMore();
+	}, [])
+	
+	// console.log(postings)
+
 	return (
 		<div className="brd">
 			<span>
@@ -27,12 +51,12 @@ function Brd({ name, data, cat }) {
 				<div className="brd__reads">조회</div>
 			</div>
 			<div className="brd_body">
-				{data
+				{postings
 					.slice(0)
 					.reverse()
-					.map(item => {
+					.map((item, i) => {
 						return (
-							<BrdItem name={name} item={item} key={item.number} cat={cat} />
+							<BrdItem name={name} item={item} key={i} cat={cat} />
 						);
 					})}
 			</div>

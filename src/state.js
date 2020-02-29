@@ -5,6 +5,10 @@ const initialState = {
 	currentNav: "home",
 	name: "",
 	loginOpen:false,
+	news:[],
+	buysell:[],
+	forum:[],
+	info:[],
 	state: {
 		cat: "loginInfo",
 		date: "email",

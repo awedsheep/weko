@@ -10,7 +10,6 @@ function Brd_Item({ item, cat, name }) {
 
 	return (
 		<div className="brd_Item">
-			<div className="brd__number">{item.number}</div>
 			<div className="brd__title">
 				<Link
 					to={{

@@ -4,9 +4,14 @@ import "./Board.css";
 import more from "../images/more.png";
 import { Link } from "react-router-dom";
 import { getRecentTen } from "../../apiCall";
+import {useGlobalState} from "../../state"
 
 function Board({ newestID, name, cat, data }) {
 	const [tenItems, setTenItems] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+	
+	const [postings, setPostings] = useGlobalState(cat);
+	
+	
 	const [loaded, setLoaded] = useState(false);
 
 	async function fetchTenItems() {
@@ -14,10 +19,12 @@ function Board({ newestID, name, cat, data }) {
 			const res = await getRecentTen("entertainment");
 			setTenItems(res);
 			setLoaded(true);
+			setPostings(res);
 		} else if (cat === "news") {
 			const res = await getRecentTen("news");
 			setTenItems(res);
 			setLoaded(true);
+			setPostings(res);
 		}
 	}
 	// console.log(data);
@@ -25,7 +32,7 @@ function Board({ newestID, name, cat, data }) {
 		fetchTenItems();
 	}, []);
 	// console.log(tenItems);
-
+	// console.log(postings)
 	return (
 		<div className="board">
 			<div className="board_header">
