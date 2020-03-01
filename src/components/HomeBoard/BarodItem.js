@@ -6,7 +6,7 @@ function BoardItem({ num, item, cat }) {
 
 
 
-	console.log(item);
+	// console.log(item);
 	let srcc = "https://picsum.photos/1" + (10 + Math.floor(Math.random() * 500));
 	if(item.body.includes("src")){
 		
@@ -22,7 +22,7 @@ function BoardItem({ num, item, cat }) {
 		<li>
 			<Link
 				to={{
-					pathname: "/" + cat + "/view/" + num,
+					pathname: "/" + cat + "/1/" + num,
 					item: { item }
 				}}
 			>

@@ -1,20 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "semantic-ui-react";
+import { useGlobalState, setNavName } from "../../state.js";
 
-function Brd_Item({ item, cat, name }) {
+function Brd_Item({ cat, name, page, num }) {
+	const [postings, setPostings] = useGlobalState(cat);
 	let c = "#";
 	c += Math.floor(Math.random() * 10);
 	c += Math.floor(Math.random() * 10);
 	c += Math.floor(Math.random() * 10);
-	// console.log("brdien")
-	// console.log(item)
+
+	var item = postings[num];
 	return (
+
 		<div className="brd_Item">
 			<div className="brd__title">
 				<Link
+					onClick={() => window.scrollTo(0, 0)}
 					to={{
-						pathname: "/" + cat + "/view/" + "777",
+						pathname: "/" + cat + "/" + page + "/" + num,
 						item: { item },
 						name: { name }
 					}}

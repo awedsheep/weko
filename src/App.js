@@ -10,6 +10,7 @@ import NewsView from "./routes/NewsView";
 import ForumView from "./routes/ForumView";
 import BuySellView from "./routes/BuySellView";
 import InfoTipsView from "./routes/InfoTipsView";
+
 import Banner1 from "./components/Banner1";
 import Write from "./routes/Write";
 import Footer from "./components/Footer";
@@ -869,11 +870,12 @@ function App() {
 							component={News} />
 						
 						<Route
-							path="/news/view"
+							path="/news"
 							exact={true}
 							render={() => <News data={data.news} />}
 						/>
-						<Route path="/news/view/:id" component={NewsView} />
+						
+						<Route path="/news/:page/:id" component={NewsView} />
 						{/* <Route path="/news/view/:id" component={NewsView} /> */}
 						<Route
 							path="/forum/:page"
@@ -881,7 +883,7 @@ function App() {
 							render={() => <Forum data={data.forum} />}
 						/>
 						<Route
-							path="/forum/view/:id"
+							path="/forum/:page/:id"
 							// exact={true}
 							component={ForumView} />
 						
@@ -891,20 +893,18 @@ function App() {
 							render={() => <BuySell data={data.buysell} />}
 						/>
 						<Route
-							path="/buysell/view/:id"
+							path="/buysell/:page/:id"
 							// exact={true}
-							render={() => <BuySellView data={data.buysell} />}
-						/>
+							component={BuySellView} />
 						<Route
 							path="/info/:page"
 							exact={true}
 							render={() => <InfoTips data={data.info} />}
 						/>
 						<Route
-							path="/info/view/:id"
+							path="/info/:page/:id"
 							// exact={true}
-							render={() => <InfoTipsView data={data.info} />}
-						/>
+							component={InfoTipsView} />
 						<Route path="/:cat/write" component={Write} />
 					</div>
 				</div>

@@ -92,7 +92,7 @@ export async function getItem(cat, date) {
 		} else {
 			res = await axios.get(`${config.api.invokeUrl}/post/${cat}/${date}`);
 		}
-		console.log(res.data);
+		// console.log(res.data);
 		return res.data;
 	} catch (err) {
 		console.log(`error adding data: ${err}`);
@@ -185,7 +185,7 @@ export async function putUser(newUserParam) {
 	console.log("Creating New user...");
 	try {
 		var data = await axios.post(`${config.api.invokeUrl}/login`, newUserParam);
-		console.log("hash: " + data.data)
+		// console.log("hash: " + data.data)
 		return data.data;
 	} catch (err) {
 		console.log(`error adding data: ${err}`);

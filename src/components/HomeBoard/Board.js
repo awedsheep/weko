@@ -12,7 +12,7 @@ function Board({ newestID, name, cat, data }) {
 	const [postings, setPostings] = useGlobalState(cat);
 	const [loaded, setLoaded] = useState(false);
 
-	console.log(cat)
+	// console.log(cat)
 	async function fetchTenItems() {
 		var res;
 		if (cat === "forum") {

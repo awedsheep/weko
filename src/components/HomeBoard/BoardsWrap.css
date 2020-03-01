@@ -1,10 +1,10 @@
 .boarder_warp {
-	margin-top: 2%;
 	padding: 1% 0;
+	padding-top: 0;
 }
 
 .boarder_warp > div {
-	width: 96%;
+	width: 100%;
 	max-width: 1260px;
 	margin: 0 auto;
 	font-size: 0;

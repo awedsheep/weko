@@ -1,6 +1,7 @@
 import React from "react";
 import BrdOpen from "../components/Brds/BrdOpen";
 import { Redirect } from "react-router-dom";
+import Brd from "../components/Brds/Brd"
 
 function ForumView({ location }) {
 	if (location.item === undefined) {
@@ -10,6 +11,7 @@ function ForumView({ location }) {
 		return (
 			<div>
 				<BrdOpen item={location.item.item} />
+				<Brd name="" cat="forum"  />
 			</div>
 		);
 	}
