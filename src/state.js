@@ -4,11 +4,12 @@ import { updateItemsById, getItem } from "./apiCall";
 const initialState = {
 	currentNav: "home",
 	name: "",
-	loginOpen:false,
-	news:[],
-	buysell:[],
-	forum:[],
-	info:[],
+	loginOpen: false,
+	news: [],
+	buysell: [],
+	forum: [],
+	info: [],
+	commentShow: true,
 	state: {
 		cat: "loginInfo",
 		date: "email",
@@ -62,9 +63,6 @@ export function setLIState(param) {
 		}
 	};
 
-	
-
-		
 	// console.log(param)
 	updateItemsById(newparam);
 }

@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Icon } from "semantic-ui-react";
+import { Icon, ItemDescription } from "semantic-ui-react";
 import { useGlobalState, setNavName } from "../../state.js";
+import {
+	updateItemsById,
+	dateFormatted,
+	calulateDayDiff
+} from "../../apiCall.js";
 
 function Brd_Item({ cat, name, page, num }) {
 	const [postings, setPostings] = useGlobalState(cat);
@@ -11,8 +16,15 @@ function Brd_Item({ cat, name, page, num }) {
 	c += Math.floor(Math.random() * 10);
 
 	var item = postings[num];
-	return (
 
+	// if (item.numComment === undefined) {
+	// 	updateItemsById({
+	// 		cat: item.cat,
+	// 		date: item.date,
+	// 		changedValue: { numComment: 0 }
+	// 	});
+	// }
+	return (
 		<div className="brd_Item">
 			<div className="brd__title">
 				<Link
@@ -28,13 +40,26 @@ function Brd_Item({ cat, name, page, num }) {
 							{item.tag ? item.tag : ""}
 						</div>
 						{item.title}
-						<span className="brd_item_rep">
-							<img
-								style={{ height: "9px", marginLeft: "3px", marginRight: "3px" }}
-								src="https://img.icons8.com/ios-filled/50/ff0000/n.png"
-								alt="new"
-							/>
-							[3]
+						<span
+							className="brd_item_rep"
+							style={{
+								marginLeft: "3px"
+							}}
+						>
+							{calulateDayDiff(item.date) > 7 ? (
+								""
+							) : (
+								<img
+									style={{
+										height: "9px",
+
+										marginRight: "3px"
+									}}
+									src="https://img.icons8.com/ios-filled/50/ff0000/n.png"
+									alt="new"
+								/>
+							)}
+							[{item.numComment}]
 						</span>
 					</div>
 				</Link>

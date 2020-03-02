@@ -12,7 +12,7 @@
 	table-layout: fixed;
 	font-family: "KOMACON";
 }
-.open_table img{
+.open_table img {
 	max-width: 100%;
 }
 
@@ -110,9 +110,15 @@ legend {
 	text-align: center !important;
 }
 
+div.open_table > div > div > form {
+	display: flow-root;
+}
+.comment_hide {
+	display: none !important;
+}
 @media (max-width: 950px) {
 	.open_table img {
-		min-width:50% !important
+		min-width: 50% !important;
 	}
 	td.table__date.table__ {
 		text-align: right;

@@ -1,23 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { calulateDayDiff } from "../../apiCall";
 
 function BoardItem({ num, item, cat }) {
-
-
-
 	// console.log(item);
 	let srcc = "https://picsum.photos/1" + (10 + Math.floor(Math.random() * 500));
-	if(item.body.includes("src")){
-		
-		var splitted = item.body.split(`src="`)[1].split(`"`)[0].replace("..", "http://www.etoland.co.kr")
-		if(!splitted.includes("http")){
+	if (item.body.includes("src")) {
+		var splitted = item.body
+			.split(`src="`)[1]
+			.split(`"`)[0]
+			.replace("..", "http://www.etoland.co.kr");
+		if (!splitted.includes("http")) {
 			splitted = "http://www.etoland.co.kr" + splitted;
 		}
 		// console.log(splitted)
 		srcc = splitted;
 	}
-	
+
 	return (
 		<li>
 			<Link
@@ -36,18 +35,22 @@ function BoardItem({ num, item, cat }) {
 							<span>{item.date.substring(0, 10)}</span>
 						</div>
 						<br />
-						
+
 						{item.title}
 						<div className="board_item_num_rep">
-							<img
-								style={{
-									height: "12px",
-									marginRight: "3px",
-									marginBottom: "4px"
-								}}
-								src="https://img.icons8.com/ios-filled/50/ff0000/n.png"
-								alt="new"
-							/>
+							{calulateDayDiff(item.date) > 7 ? (
+								""
+							) : (
+								<img
+									style={{
+										height: "12px",
+										marginRight: "3px",
+										marginBottom: "4px"
+									}}
+									src="https://img.icons8.com/ios-filled/50/ff0000/n.png"
+									alt="new"
+								/>
+							)}
 							[3]
 						</div>
 					</div>

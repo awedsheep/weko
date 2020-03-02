@@ -807,10 +807,8 @@ const data = {
 
 // getItemByNumber("news", "2020-02-22-20-25-05-422", 50)
 
-
-
 // const NewUser = {
-// 		id: "ckswn211@hotmail.com", 
+// 		id: "ckswn211@hotmail.com",
 // 		pass: "12345678"
 // 	};
 
@@ -842,7 +840,7 @@ function App() {
 				</div>
 				<div className="container_body_warp">
 					<div className="container_body">
-						{/* <div className="container_body_left">
+						<div className="container_body_left">
 							<img
 								alt=""
 								src="https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad1-160x600.jpeg"
@@ -851,8 +849,8 @@ function App() {
 								alt=""
 								src="https://www.epa.gov/sites/production/files/styles/large/public/2018-10/english_national_web_banner_160x600.jpg"
 							/>
-						</div> */}
-						{/* <div className="container_body_right">
+						</div>
+						<div className="container_body_right">
 							<img
 								alt=""
 								src="https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad2-160x600.jpeg"
@@ -861,21 +859,14 @@ function App() {
 								alt=""
 								src="https://i.pinimg.com/236x/1f/28/55/1f28550a0ec49a99458041dfab3ee9b1--recent-earthquakes-the-game.jpg"
 							/>
-						</div> */}
+						</div>
 						{/* <Banner1 /> */}
 						<Route path="/" exact={true} render={() => <Home data={data} />} />
-						<Route
-							path="/news/:page"
-							exact={true}
-							component={News} />
-						
-						<Route
-							path="/news"
-							exact={true}
-							render={() => <News data={data.news} />}
-						/>
-						
-						<Route path="/news/:page/:id" component={NewsView} />
+						<Route path="/news/:page" exact={true} component={News} />
+
+						<Route path="/news" exact={true} component={News} />
+
+						<Route path="/news/:page/:id" exacat={true} component={NewsView} />
 						{/* <Route path="/news/view/:id" component={NewsView} /> */}
 						<Route
 							path="/forum/:page"
@@ -885,8 +876,9 @@ function App() {
 						<Route
 							path="/forum/:page/:id"
 							// exact={true}
-							component={ForumView} />
-						
+							component={ForumView}
+						/>
+
 						<Route
 							path="/buysell/:page"
 							exact={true}
@@ -895,7 +887,8 @@ function App() {
 						<Route
 							path="/buysell/:page/:id"
 							// exact={true}
-							component={BuySellView} />
+							component={BuySellView}
+						/>
 						<Route
 							path="/info/:page"
 							exact={true}
@@ -904,8 +897,9 @@ function App() {
 						<Route
 							path="/info/:page/:id"
 							// exact={true}
-							component={InfoTipsView} />
-						<Route path="/:cat/write" component={Write} />
+							component={InfoTipsView}
+						/>
+						<Route path="/write/:cat" component={Write} />
 					</div>
 				</div>
 

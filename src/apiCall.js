@@ -17,7 +17,8 @@ const config = require("./config.json");
 // export const NewNewsItem = {
 // 	cat: "news",
 // 	date: "2020-02-13-07-18-23-000",
-// 	content: 9
+// 	content: 9,
+//	numComment: 0
 // };
 
 // putPost(NewNewsItem);
@@ -33,17 +34,13 @@ export async function putPost(newParams) {
 }
 
 export async function updateIndex(cat) {
-
 	const params = {
 		cat: cat,
-		increament: true,
-
-	}
+		increament: true
+	};
 
 	try {
-		const res = await axios.patch(
-			`${config.api.invokeUrl}/post/index`, params
-		);
+		const res = await axios.patch(`${config.api.invokeUrl}/post/index`, params);
 		// console.log(res);
 		return res.data;
 	} catch (err) {
@@ -51,12 +48,13 @@ export async function updateIndex(cat) {
 	}
 }
 
-export async function getItemByNumber(cat, date, num){
-	console.log(`getting ${num} of Items form ${cat}`)
-	var myparam = {cat,date,num}
+export async function getItemByNumber(cat, date, num) {
+	console.log(`getting ${num} of Items form ${cat}`);
+	var myparam = { cat, date, num };
 	try {
 		const res = await axios.post(
-			`${config.api.invokeUrl}/post/getlist`, myparam
+			`${config.api.invokeUrl}/post/getlist`,
+			myparam
 		);
 		// console.log(res);
 		return res.data;
@@ -69,9 +67,7 @@ export async function getItemByNumber(cat, date, num){
 //need to compare with scan.... 2querycalls vs scan
 export async function getRecentTwenty(cat) {
 	try {
-		const res = await axios.get(
-			`${config.api.invokeUrl}/post/${cat}`
-		);
+		const res = await axios.get(`${config.api.invokeUrl}/post/${cat}`);
 		// console.log(res);
 		return res.data;
 	} catch (err) {
@@ -83,8 +79,8 @@ export async function getRecentTwenty(cat) {
 // getItem("news")
 export async function getItem(cat, date) {
 	console.log("attempting to start get Item or Items from key: cat, date");
-	console.log(cat)
-	console.log(date)
+	console.log(cat);
+	console.log(date);
 	try {
 		var res = [];
 		if (date == null) {
@@ -98,7 +94,6 @@ export async function getItem(cat, date) {
 		console.log(`error adding data: ${err}`);
 	}
 }
-
 
 //아놔 업데이트 기능 구현 너무 어려웠음 ㅠㅠ. 지정된 아이디에 바꾸고 싶은 데이타만 changedValue에 넣어주셈 숫자 상관 없음
 // updateItemsById();
@@ -137,10 +132,10 @@ export async function fetch() {
 //test with and "#n >= :v and #n2 >= :v2"
 // var filterParam = {
 // 	cat : "news",
-// 		expression: "#n >= :v", 
+// 		expression: "#n >= :v",
 // 		names: {"#n": "content"},
 // 		values: {":v": 5}
-	
+
 // }
 
 // getCatWithFiltered("news", filterExpression);
@@ -148,7 +143,10 @@ export async function getCatWithFiltered(filterParam) {
 	console.log("attempting to start get Item or Items from key: cat, date");
 
 	try {
-		var res = await axios.post(`${config.api.invokeUrl}/post/filtered`, filterParam);
+		var res = await axios.post(
+			`${config.api.invokeUrl}/post/filtered`,
+			filterParam
+		);
 
 		// console.log(res.data[0]);
 		return res.data[0];
@@ -164,7 +162,6 @@ export async function getCatWithFiltered(filterParam) {
 // 		children: [] //this is array
 // 	};
 
-
 export async function putComment(newParams) {
 	console.log("Creating New comment...");
 	try {
@@ -172,14 +169,15 @@ export async function putComment(newParams) {
 	} catch (err) {
 		console.log(`error adding data: ${err}`);
 	}
-
+	var sp = newParams.cat.split(/-(.+)/);
+	console.log(sp);
+	updateItemsById({ cat: sp[0], date: sp[1], increament: true });
 }
 
 // const NewUser = {
-// 		id: "ckswn111@hotmail.com", 
+// 		id: "ckswn111@hotmail.com",
 // 		pass: "123456789"
 // 	};
-
 
 export async function putUser(newUserParam) {
 	console.log("Creating New user...");
@@ -196,15 +194,12 @@ export async function authenticateUser(userParam) {
 	console.log("authenticate a user...");
 	try {
 		var data = await axios.patch(`${config.api.invokeUrl}/login`, userParam);
-		console.log("success logging in? " + data.data)
+		console.log("success logging in? " + data.data);
 		return data.data;
 	} catch (err) {
 		console.log(`error adding data: ${err}`);
 	}
 }
-
-
-
 
 export async function updateCommentById(params) {
 	console.log("attempting to start update parameters");
@@ -225,16 +220,51 @@ export async function updateCommentById(params) {
 	}
 }
 
-export function dateFormatted(){
+export function dateFormatted() {
 	let current_date = new Date();
-	let formatted_date = current_date.getFullYear() + "-" + current_date.getMonth() + "-" + current_date.getDate() + "-" +current_date.getHours() + "-" + current_date.getMinutes() + "-" +current_date.getSeconds() + "-" + current_date.getMilliseconds();
+	let formatted_date =
+		current_date.getFullYear() +
+		"-" +
+		("0" + (current_date.getMonth() + 1)).slice(-2) +
+		"-" +
+		("0" + current_date.getDate()).slice(-2) +
+		"-" +
+		("0" + current_date.getHours()).slice(-2) +
+		"-" +
+		("0" + current_date.getMinutes()).slice(-2) +
+		"-" +
+		("0" + current_date.getSeconds()).slice(-2) +
+		"-" +
+		("0" + current_date.getMilliseconds()).slice(-3);
 	formatted_date.substring(-3);
 	return formatted_date;
 }
 
-
-
-
+export function calulateDayDiff(day) {
+	var sp1 = dateFormatted().split("-");
+	var sp2 = day.split("-");
+	return (
+		(new Date(
+			parseInt(sp1[0]),
+			parseInt(sp1[1]),
+			parseInt(sp1[2]),
+			parseInt(sp1[3]),
+			parseInt(sp1[4]),
+			parseInt(sp1[5]),
+			parseInt(sp1[6])
+		) -
+			new Date(
+				parseInt(sp2[0]),
+				parseInt(sp2[1]),
+				parseInt(sp2[2]),
+				parseInt(sp2[3]),
+				parseInt(sp2[4]),
+				parseInt(sp2[5]),
+				parseInt(sp2[6])
+			)) /
+		(1000 * 60 * 60 * 24)
+	);
+}
 
 //데이타 베이스 배워서 일단 내가 임의로 넣은걸 콘솔로 띄워봤음 (DynamoDB -> Lambda -> API gateWay -> Here)
 // load database and console it

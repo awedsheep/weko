@@ -5,18 +5,25 @@ import ReactSummernote from "react-summernote";
 import "react-summernote/dist/react-summernote.css";
 import Resizer from "react-image-file-resizer";
 import axios from "axios";
-import { Icon, Modal } from "semantic-ui-react";
+import { Icon, Modal, Form, Input, Select } from "semantic-ui-react";
 import { Prompt } from "react-router";
 import { useGlobalState, setNavName } from "../state.js";
 
 const config = require("../config.json");
 let numIMG = 0;
-function Write({ location }) {
+function Write() {
 	const [editorHtml, setEditorHtml] = useState("");
 	const [isFocus, setIsFocus] = useState(false);
 	const [modalOpen, setModelOpen] = useState(false);
 
 	const [currentNav] = useGlobalState("currentNav");
+	const [nameNav] = useGlobalState("name");
+
+	const options = [
+		{ key: "m", text: "[캐나다]", value: "male" },
+		{ key: "f", text: "[마니토바]", value: "female" },
+		{ key: "o", text: "[한인사회]", value: "other" }
+	];
 
 	const onChange = v => {
 		setEditorHtml(v);
@@ -31,7 +38,7 @@ function Write({ location }) {
 	}
 	useEffect(() => {
 		window.addEventListener("beforeunload", beforeunload);
-		var currentURL = window.location.pathname.split("/")[1];
+		var currentURL = window.location.pathname.split("/")[2];
 		if (currentURL !== currentNav) {
 			setNavName(currentURL);
 		}
@@ -145,7 +152,26 @@ function Write({ location }) {
 				</Modal.Content>
 			</Modal>
 			{/* <button onClick={oc}>BUTTON</button> */}
-			<span className="editor-title">{location.name}</span>
+			<span className="editor-title">{nameNav}</span>
+			<Form>
+				<Form.Group>
+					<Form.Field
+						control={Input}
+						label="글 제목"
+						placeholder="글제목을 입력해주세요"
+						width="8"
+						error
+					/>
+					<Form.Field
+						control={Select}
+						label="태그 제목"
+						options={options}
+						placeholder="[태그선택]"
+						width="3"
+						error
+					/>
+				</Form.Group>
+			</Form>
 			<ReactSummernote
 				value={editorHtml}
 				options={{
