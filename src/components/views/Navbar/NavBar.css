@@ -133,23 +133,22 @@ a {
 	margin-top: 5px;
 	float: right;
 }
-
+/*
 .container_body_warp {
-	/* display: inline-block; */
+
 }
 .container_body_right,
 .container_body_left {
 	width: 250px;
 	height: 99%;
-	/* background: cornflowerblue; */
-	/* position: absolute; */
+
 }
 .container_body_left > img {
 	float: right;
 }
 .container_body_left > img,
 .container_body_right > img {
-	/* height: 49%; */
+
 	width: 100%;
 	margin-bottom: 3%;
 }
@@ -163,34 +162,15 @@ a {
 	margin-right: -25%;
 	top: 10px;
 }
-@media (max-width: 1500px) {
-	.container_body_left {
-		margin-left: -32%;
-		width: 230px;
-	}
-	.container_body_right {
-		margin-right: -32%;
-		width: 230px;
-	}
-}
-@media (max-width: 1200px) {
-	.container_body_left {
-		margin-left: -32%;
-		width: 210px;
-	}
-	.container_body_right {
-		margin-right: -32%;
-		width: 210px;
-	}
-}
+*/
 
 .container_body {
 	position: relative;
-	max-width: 1200px;
-	margin: auto;
+	/* max-width: 1200px; */
+	margin: 0 auto;
 	/* background: #f5f6f7; */
-	padding-top: 5px;
-	width: 60%;
+	/* padding-top: 5px; */
+	width: 100%;
 }
 .__footer {
 	clear: both;
@@ -229,7 +209,34 @@ a {
 	font-size: 15px;
 } */
 
+#root > div > div.container_body_warp > div > div {
+	max-width: 1260px;
+}
+div.segment_wrap {
+	padding: 0 !important;
+	border: none !important;
+
+	margin: auto;
+}
+
+div.rail_right,
+div.rail_left {
+	padding: 0 !important;
+	margin: 0 !important;
+	width: 30% !important;
+}
+div.rail_right {
+	margin-left: 5px !important;
+}
+div.rail_left {
+	margin-right: 5px !important;
+}
+
 @media (max-width: 950px) {
+	div.rail_right,
+	div.rail_left {
+		display: none !important;
+	}
 	.menu {
 		display: none;
 	}
@@ -237,7 +244,17 @@ a {
 		display: block;
 		position: absolute;
 		top: 37px;
-		right: 2%;
+		right: 7%;
+	}
+	/* div.container_body_warp > div > div:nth-child(1),
+	div.container_body_warp > div > div:nth-child(2),
+	div.container_body_warp > div > div:nth-child(4),
+	div.container_body_warp > div > div:nth-child(5) {
+		display: none !important;
+	} */
+	#root > div > div.container_body_warp > div > div.ten.wide.column {
+		margin-top: 20px;
+		width: 100% !important;
 	}
 }
 
@@ -413,6 +430,10 @@ body
 	}
 }
 @media (max-width: 950px) {
+	#root > div > div.container_body_warp > div {
+		width: 100%;
+		margin: 0;
+	}
 	div.container_body > div._editor {
 		margin-left: 0;
 		margin-right: 0;
@@ -739,4 +760,11 @@ body
 .note-popover .popover-content .note-color-palette div .note-color-btn:hover,
 .note-toolbar .note-color-palette div .note-color-btn:hover {
 	border: 1px solid #000;
+}
+
+@media (max-width: 950px) {
+	div.container_body_warp > div > div.ten.wide.column {
+		width: 100% !important;
+		padding: 0;
+	}
 }

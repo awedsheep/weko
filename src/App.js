@@ -1,6 +1,6 @@
-import React from "react";
+import React, { createRef } from "react";
 import NavBar from "./components/views/Navbar/NavBar";
-import { BrowserRouter, Route, withRouter } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import News from "./routes/News";
 import Forum from "./routes/Forum";
@@ -16,6 +16,7 @@ import Write from "./routes/Write";
 import Footer from "./components/Footer";
 import { putUser, authenticateUser } from "./apiCall";
 import ScrollTop from "./ScrollTop";
+import { Grid, Sticky, Ref, Segment, Rail } from "semantic-ui-react";
 
 // const NewNewsItem = {
 // 	cat: "news",
@@ -80,6 +81,8 @@ function App() {
 
 	// console.log(isLoggedIn);
 
+	const contextRef = createRef();
+
 	//getcookie and compare with dynamoDB
 	const handleScroll = (prevState, nextState) => {
 		if (nextState.location.action !== "POP") {
@@ -94,73 +97,185 @@ function App() {
 					<div className="header">
 						<NavBar />
 					</div>
+
 					<div className="container_body_warp">
-						<div className="container_body">
-							<div className="container_body_left">
-								<img
-									alt=""
-									src="https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad1-160x600.jpeg"
-								/>
-								<img
-									alt=""
-									src="https://www.epa.gov/sites/production/files/styles/large/public/2018-10/english_national_web_banner_160x600.jpg"
-								/>
-							</div>
-							<div className="container_body_right">
-								<img
-									alt=""
-									src="https://d2slcw3kip6qmk.cloudfront.net/marketing/press/images/template-gallery/banner-ad2-160x600.jpeg"
-								/>
-								<img
-									alt=""
-									src="https://i.pinimg.com/236x/1f/28/55/1f28550a0ec49a99458041dfab3ee9b1--recent-earthquakes-the-game.jpg"
-								/>
-							</div>
-							{/* <Banner1 /> */}
-							<Route path="/" exact={true} render={() => <Home />} />
-							<Route path="/news/:page" exact={true} component={News} />
+						<Grid centered columns={3}>
+							{/* <Grid.Column width="3"> */}
 
-							<Route path="/news" exact={true} component={News} />
+							{/* </Grid.Column> */}
+							<Grid.Column width="10">
+								<Ref innerRef={contextRef}>
+									<Segment width="3" className="segment_wrap">
+										<div className="container_body">
+											{/* <Banner1 /> */}
 
-							<Route
-								path="/news/:page/:id"
-								exacat={true}
-								component={NewsView}
-							/>
-							{/* <Route path="/news/view/:id" component={NewsView} /> */}
-							<Route
-								path="/forum/:page"
-								exact={true}
-								render={() => <Forum />}
-							/>
-							<Route
-								path="/forum/:page/:id"
-								// exact={true}
-								component={ForumView}
-							/>
+											<Route path="/" exact={true} render={() => <Home />} />
+											<Route path="/news/:page" exact={true} component={News} />
 
-							<Route
-								path="/buysell/:page"
-								exact={true}
-								render={() => <BuySell />}
-							/>
-							<Route
-								path="/buysell/:page/:id"
-								// exact={true}
-								component={BuySellView}
-							/>
-							<Route
-								path="/info/:page"
-								exact={true}
-								render={() => <InfoTips />}
-							/>
-							<Route
-								path="/info/:page/:id"
-								// exact={true}
-								component={InfoTipsView}
-							/>
-							<Route path="/write/:cat" component={Write} />
-						</div>
+											<Route path="/news" exact={true} component={News} />
+
+											<Route
+												path="/news/:page/:id"
+												exacat={true}
+												component={NewsView}
+											/>
+											{/* <Route path="/news/view/:id" component={NewsView} /> */}
+											<Route
+												path="/forum/:page"
+												exact={true}
+												render={() => <Forum />}
+											/>
+											<Route
+												path="/forum/:page/:id"
+												// exact={true}
+												component={ForumView}
+											/>
+
+											<Route
+												path="/buysell/:page"
+												exact={true}
+												render={() => <BuySell />}
+											/>
+											<Route
+												path="/buysell/:page/:id"
+												// exact={true}
+												component={BuySellView}
+											/>
+											<Route
+												path="/info/:page"
+												exact={true}
+												render={() => <InfoTips />}
+											/>
+											<Route
+												path="/info/:page/:id"
+												// exact={true}
+												component={InfoTipsView}
+											/>
+											<Route path="/write/:cat" component={Write} />
+										</div>
+
+										<Rail position="left" className="rail_left">
+											<Sticky context={contextRef}>
+												<div>
+													<div
+														style={{
+															float: "right",
+															marginTop: "10px",
+															width: "100%",
+															minWidth: "150px",
+															maxWidth: "250px",
+															paddingTop: "32%",
+															height: "100%",
+															maxHeight: "80px",
+															overflow: "hidden",
+															border: "1px solid black"
+														}}
+													>
+														{/* <img src="https://inspiration.ignitemag.ca/wp-content/uploads/2019/02/Winnipeg-Banner.jpg" /> */}
+													</div>
+													<div
+														style={{
+															float: "right",
+															marginTop: "10px",
+															width: "100%",
+
+															minWidth: "150px",
+															maxWidth: "250px",
+															paddingTop: "32%",
+															maxHeight: "80px",
+															border: "1px solid black"
+														}}
+													></div>
+													<div
+														style={{
+															float: "right",
+															marginTop: "10px",
+															width: "100%",
+
+															minWidth: "150px",
+															maxWidth: "250px",
+															paddingTop: "32%",
+															maxHeight: "80px",
+															border: "1px solid black"
+														}}
+													></div>
+													<div
+														style={{
+															float: "right",
+															marginTop: "10px",
+															width: "100%",
+															minWidth: "150px",
+															maxWidth: "250px",
+															paddingTop: "32%",
+															maxHeight: "80px",
+															border: "1px solid black"
+														}}
+													></div>
+												</div>
+											</Sticky>
+										</Rail>
+										<Rail position="right" className="rail_right">
+											<Sticky context={contextRef}>
+												<div>
+													<div
+														style={{
+															float: "left",
+															marginTop: "10px",
+															width: "100%",
+															minWidth: "150px",
+															maxWidth: "250px",
+															paddingTop: "32%",
+															maxHeight: "80px",
+
+															border: "1px solid black"
+														}}
+													></div>
+													<div
+														style={{
+															float: "left",
+															marginTop: "10px",
+															width: "100%",
+															minWidth: "150px",
+															maxWidth: "250px",
+															paddingTop: "32%",
+															maxHeight: "80px",
+															border: "1px solid black"
+														}}
+													></div>
+													<div
+														style={{
+															float: "left",
+															marginTop: "10px",
+															width: "100%",
+															minWidth: "150px",
+															maxWidth: "250px",
+															paddingTop: "32%",
+															maxHeight: "80px",
+															border: "1px solid black"
+														}}
+													></div>
+													<div
+														style={{
+															float: "left",
+															marginTop: "10px",
+															width: "100%",
+															minWidth: "150px",
+															maxWidth: "250px",
+															paddingTop: "32%",
+															maxHeight: "80px",
+															border: "1px solid black"
+														}}
+													></div>
+												</div>
+											</Sticky>
+										</Rail>
+									</Segment>
+								</Ref>
+							</Grid.Column>
+							{/* <Grid.Column width="3"> */}
+
+							{/* </Grid.Column> */}
+						</Grid>
 					</div>
 
 					{/* <div className="footer">WECO Korean Comunity ©2020 </div> */}

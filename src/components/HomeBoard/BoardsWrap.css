@@ -5,7 +5,7 @@
 
 .boarder_warp > div {
 	width: 100%;
-	max-width: 1260px;
+	/* max-width: 1260px; */
 	margin: 0 auto;
 	font-size: 0;
 	display: flex;
