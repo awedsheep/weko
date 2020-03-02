@@ -33,9 +33,9 @@ function Brd_Open() {
 
 	const [postings, setPostings] = useGlobalState(cat);
 
-	console.log(postings);
-	console.log("postLoaded??: " + postLoaded);
-	console.log(Math.ceil(page / 5) * 100);
+	// console.log(postings);
+	// console.log("postLoaded??: " + postLoaded);
+	// console.log(Math.ceil(page / 5) * 100);
 	var pageReq = Math.ceil(page / 5) * 100;
 	var abNumReq = Math.ceil(itemAbsoluteNum / 100) * 100;
 
