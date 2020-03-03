@@ -89,6 +89,9 @@ function App() {
 			window.scrollTo(0, 0);
 		}
 	};
+
+
+
 	return (
 		<div className="warper_all">
 			{/* <button onClick={() => putPost(ppp)}>POST</button> */}
@@ -118,6 +121,7 @@ function App() {
 												path="/news/:page/:id"
 												exacat={true}
 												component={NewsView}
+												
 											/>
 											{/* <Route path="/news/view/:id" component={NewsView} /> */}
 											<Route

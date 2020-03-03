@@ -181,9 +181,9 @@ function Brd({ name, data, cat }) {
 		</div>
 	);
 
-	console.log("THIS IS ABSOLUTE ITEM NUMBER: " + itemAbsoluteNum);
-	console.log("THIS IS THE PAGE I WANT TO GO TO: " + basePage * 5);
-	console.log("UPPAGEUNTIL: " + upUntilPage);
+	// console.log("THIS IS ABSOLUTE ITEM NUMBER: " + itemAbsoluteNum);
+	// console.log("THIS IS THE PAGE I WANT TO GO TO: " + basePage * 5);
+	// console.log("UPPAGEUNTIL: " + upUntilPage);
 
 	var navigationWithItem = (
 		<div className="paging">
@@ -308,6 +308,8 @@ function Brd({ name, data, cat }) {
 			{writeButton}
 		</div>
 	);
+
+	
 
 	return (
 		<div className="brd">

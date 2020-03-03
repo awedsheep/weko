@@ -9,7 +9,8 @@ function NewsView({ location }) {
 	// if(location.item===undefined){
 	// 	return <Redirect to = "/" />
 	// }else{
-	
+	// console.log("ATTENTION")
+	// console.log(location);
 	return (
 		<div>
 			<BrdOpen  />

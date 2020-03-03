@@ -17,18 +17,26 @@ function Brd_Item({ cat, name, page, num }) {
 
 	var item = postings[num];
 
-	// if (item.numComment === undefined) {
+
+
+	// if (item.view === undefined) {
 	// 	updateItemsById({
 	// 		cat: item.cat,
 	// 		date: item.date,
-	// 		changedValue: { numComment: 0 }
+	// 		changedValue: { view: 0 }
 	// 	});
 	// }
+	function setViewCount(){
+		window.scrollTo(0, 0)
+		//increament view!
+		updateItemsById({cat:item.cat, date:item.date, viewIncreament:true})
+	}
+
 	return (
 		<div className="brd_Item">
 			<div className="brd__title">
 				<Link
-					onClick={() => window.scrollTo(0, 0)}
+					onClick={setViewCount}
 					to={{
 						pathname: "/" + cat + "/" + page + "/" + num,
 						item: { item },

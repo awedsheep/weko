@@ -7,9 +7,7 @@ import { Link, Redirect } from "react-router-dom";
 import {
 	getItem,
 	putComment,
-	dateFormatted,
-	getItemByNumber,
-	updateCommentById
+	dateFormatted
 } from "../../apiCall";
 
 function Brd_Open() {
@@ -19,6 +17,7 @@ function Brd_Open() {
 	const [replies, setReplies] = useState([]);
 	const [commentBody, setCommentBody] = useState("");
 	// console.log(params)
+	console.log("brd open RENDERED")
 
 	var postLoaded = false;
 
@@ -42,11 +41,11 @@ function Brd_Open() {
 	if (pageReq < abNumReq) {
 		pageReq = abNumReq;
 	}
-	console.log("pageReq: " + pageReq);
+	// console.log("pageReq: " + pageReq);
 
 	var item = postings[itemAbsoluteNum];
 
-	console.log(item);
+	// console.log(item);
 	if (postings.length > 0) {
 		//something in it
 		if (postings.length >= pageReq || postings.length > pageReq - 100) {
@@ -66,6 +65,8 @@ function Brd_Open() {
 		}
 	}, [postLoaded]);
 
+	
+
 	async function fetchComment() {
 		var commentList = await getItem(item.cat + "-" + item.date);
 		commentList.sort(function(a, b) {
@@ -75,7 +76,7 @@ function Brd_Open() {
 		var current;
 		var indexC = 0;
 		var x = 1;
-		console.log(commentList);
+		// console.log(commentList);
 		while (indexC < commentList.length) {
 			current = comments;
 			var splited = commentList[indexC].id.split("-");
