@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { calulateDayDiff } from "../../apiCall";
+import { calulateDayDiff, updateItemsById } from "../../apiCall";
 
 function BoardItem({ num, item, cat }) {
 	// console.log(item);
@@ -16,10 +16,18 @@ function BoardItem({ num, item, cat }) {
 		// console.log(splitted)
 		srcc = splitted;
 	}
+	function setViewCount(){
+		window.scrollTo(0, 0)
+		console.log(item)
+		console.log("increase view count")
+		//increament view!
+		updateItemsById({cat:item.cat, date:item.date, viewIncreament:true})
+	}
 
 	return (
 		<li>
 			<Link
+				onClick = {setViewCount}
 				to={{
 					pathname: "/" + cat + "/1/" + num,
 					item: { item }

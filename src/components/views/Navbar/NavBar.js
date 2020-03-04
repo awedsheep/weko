@@ -96,8 +96,11 @@ function NavBar() {
 			alert("아이디는 이메일 형식만 가능합니다")
 			return
 		}
-		if (userPass !== userPassConfirm) {
-			alert("비밀번호가 틀렸습니다")
+		if(userPass.length < 8){
+			alert("비밀번호는 8자리 이상으로 해주세요")
+			return
+		}else if (userPass !== userPassConfirm) {
+			alert("두 비밀번호가 맞지 않습니다")
 			return
 		}
 		var isUserAlreadyInDB = await getItem("loginInfo", userId)
