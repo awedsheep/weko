@@ -9,15 +9,16 @@ import {
 	putComment,
 	dateFormatted
 } from "../../apiCall";
+export var item;
 
 function Brd_Open() {
 	const [currentNav] = useGlobalState("currentNav");
 	const [commentShow] = useGlobalState("commentShow");
 
-	const [replies, setReplies] = useState([]);
+	var [replies, setReplies] = useState([]);
 	const [commentBody, setCommentBody] = useState("");
 	// console.log(params)
-	console.log("brd open RENDERED")
+	// console.log("brd open RENDERED")
 
 	var postLoaded = false;
 
@@ -43,13 +44,15 @@ function Brd_Open() {
 	}
 	// console.log("pageReq: " + pageReq);
 
-	var item = postings[itemAbsoluteNum];
+	item = postings[itemAbsoluteNum];
 
 	// console.log(item);
 	if (postings.length > 0) {
 		//something in it
 		if (postings.length >= pageReq || postings.length > pageReq - 100) {
+			postings[itemAbsoluteNum].view +=1 
 			postLoaded = true;
+			
 		} else {
 			postLoaded = false;
 		}
@@ -61,13 +64,15 @@ function Brd_Open() {
 			//setNavName(currentURL);
 		}
 		if (postLoaded && item !== undefined) {
+			
 			fetchComment();
 		}
-	}, [postLoaded]);
+	}, [item]);
 
 	
 
 	async function fetchComment() {
+		
 		var commentList = await getItem(item.cat + "-" + item.date);
 		commentList.sort(function(a, b) {
 			return a.id.localeCompare(b.id);
@@ -76,7 +81,7 @@ function Brd_Open() {
 		var current;
 		var indexC = 0;
 		var x = 1;
-		// console.log(commentList);
+		
 		while (indexC < commentList.length) {
 			current = comments;
 			var splited = commentList[indexC].id.split("-");
@@ -93,6 +98,8 @@ function Brd_Open() {
 			}
 			indexC++;
 		}
+		
+		replies = comments;
 		setReplies(comments);
 	}
 
@@ -123,9 +130,11 @@ function Brd_Open() {
 	// 		}
 	// 	]
 
-	function submitHandler(e) {
+	async function submitHandler(e) {
 		e.preventDefault();
-
+		
+		await fetchComment();
+		
 		// console.log(date);
 		// var body = commentBody.replace(/(?:\r\n|\r|\n)/g, "<br/>");
 		var commentParam = {
@@ -135,7 +144,7 @@ function Brd_Open() {
 			comment: commentBody,
 			id: String(replies.length + 1)
 		};
-
+		
 		putComment(commentParam);
 		commentParam.replies = [];
 		setReplies([...replies, commentParam]);
@@ -146,6 +155,7 @@ function Brd_Open() {
 		return <></>;
 	}
 
+	
 	return postLoaded ? (
 		<div className="open_table">
 			<span className="open_title">
@@ -194,7 +204,7 @@ function Brd_Open() {
 							조회
 						</th>
 
-						<td className="table__ table_mobile">{item.view}</td>
+						<td className="table__ table_mobile">{item.view+1}</td>
 					</tr>
 
 					<tr>
@@ -228,6 +238,7 @@ function Brd_Open() {
 								setReplies={setReplies}
 								rep={rep}
 								repTree={replies}
+								fetchComment={fetchComment}
 							/>
 						);
 					})}

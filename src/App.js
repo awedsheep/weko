@@ -84,11 +84,7 @@ function App() {
 	const contextRef = createRef();
 
 	//getcookie and compare with dynamoDB
-	const handleScroll = (prevState, nextState) => {
-		if (nextState.location.action !== "POP") {
-			window.scrollTo(0, 0);
-		}
-	};
+
 
 
 

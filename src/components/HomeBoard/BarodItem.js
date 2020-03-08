@@ -17,7 +17,7 @@ function BoardItem({ num, item, cat }) {
 		srcc = splitted;
 	}
 	function setViewCount(){
-		window.scrollTo(0, 0)
+		
 		console.log(item)
 		console.log("increase view count")
 		//increament view!
@@ -59,7 +59,7 @@ function BoardItem({ num, item, cat }) {
 									alt="new"
 								/>
 							)}
-							[3]
+							[{item.numComment}]
 						</div>
 					</div>
 

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Comment, Form, Button } from "semantic-ui-react";
 import avatar from "../images/avatar.png";
 import { dateFormatted, putComment } from "../../apiCall";
 import { useGlobalState } from "../../state.js";
+import item from "./BrdOpen"
 function CommentItem({
 	cat,
 	num,
@@ -14,12 +15,14 @@ function CommentItem({
 	at,
 	setReplies,
 	rep,
-	repTree
+	repTree,
+	fetchComment,
 }) {
 	const [commentBoxShow, setCommentBoxShow] = useState(false);
 	const [commentBody, setCommentBody] = useState("");
 	const [commentShow, setCommentShow] = useGlobalState("commentShow");
 	let rereplies = null;
+	const [add, setAdd] = useState(false);
 	if (replies) {
 		rereplies = replies.map((rep, i) => {
 			return (
@@ -35,17 +38,23 @@ function CommentItem({
 					setReplies={setReplies}
 					rep={rep}
 					repTree={repTree}
+					fetchComment={fetchComment}
 				/>
 			);
 		});
 	}
 
-	function submitHandler(e) {
+	async function submitHandler(e) {
 		e.preventDefault();
-
+		await fetchComment();
 		// console.log(date);
 		// var body = commentBody.replace(/(?:\r\n|\r|\n)/g, "<br/>");
+		setAdd(true);
+		// setCommentBody(commentBody);
+	}
 
+	console.log("add is " + add)
+	if(add){
 		var commentParam = {
 			cat: cat,
 			date: dateFormatted(),
@@ -64,6 +73,7 @@ function CommentItem({
 		setCommentBody("");
 		setCommentShow(!commentShow);
 		setCommentBoxShow(!commentBoxShow);
+		setAdd(false);
 	}
 
 	return (

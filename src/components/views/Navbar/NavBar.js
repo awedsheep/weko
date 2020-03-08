@@ -69,7 +69,7 @@ function NavBar() {
 		//check user in the database
 		if (!isLoggedIn) {
 			var isUserAlreadyInDB = await getItem("loginInfo", userId)
-			console.log(isUserAlreadyInDB)
+			// console.log(isUserAlreadyInDB)
 			if (isUserAlreadyInDB.length >= 1) {
 				const user = {
 					id: String(userId),

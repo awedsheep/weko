@@ -56,7 +56,7 @@ export async function getItemByNumber(cat, date, num) {
 			`${config.api.invokeUrl}/post/getlist`,
 			myparam
 		);
-		// console.log(res);
+		console.log(res);
 		return res.data;
 	} catch (err) {
 		console.log(`error adding data: ${err}`);
@@ -79,8 +79,8 @@ export async function getRecentTwenty(cat) {
 // getItem("news")
 export async function getItem(cat, date) {
 	console.log("attempting to start get Item or Items from key: cat, date");
-	console.log(cat);
-	console.log(date);
+	// console.log(cat);
+	// console.log(date);
 	try {
 		var res = [];
 		if (date == null) {
