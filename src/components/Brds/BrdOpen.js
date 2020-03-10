@@ -14,6 +14,7 @@ export var item;
 function Brd_Open() {
 	const [currentNav] = useGlobalState("currentNav");
 	const [commentShow] = useGlobalState("commentShow");
+	const [login, setlogin] = useGlobalState("state");
 
 	var [replies, setReplies] = useState([]);
 	const [commentBody, setCommentBody] = useState("");
@@ -132,23 +133,26 @@ function Brd_Open() {
 
 	async function submitHandler(e) {
 		e.preventDefault();
+		if(login.isAuth === true){
+			await fetchComment();
 		
-		await fetchComment();
-		
-		// console.log(date);
-		// var body = commentBody.replace(/(?:\r\n|\r|\n)/g, "<br/>");
-		var commentParam = {
-			cat: item.cat + "-" + item.date,
-			date: dateFormatted(),
-			name: "ms.G",
-			comment: commentBody,
-			id: String(replies.length + 1)
-		};
-		
-		putComment(commentParam);
-		commentParam.replies = [];
-		setReplies([...replies, commentParam]);
-		setCommentBody("");
+			// console.log(date);
+			// var body = commentBody.replace(/(?:\r\n|\r|\n)/g, "<br/>");
+			var commentParam = {
+				cat: item.cat + "-" + item.date,
+				date: dateFormatted(),
+				name: login.name,
+				comment: commentBody,
+				id: String(replies.length + 1)
+			};
+			
+			putComment(commentParam);
+			commentParam.replies = [];
+			setReplies([...replies, commentParam]);
+			setCommentBody("");
+		}else{
+			alert("댓글을 사용하기 위해선 로그인을 해주세요")
+		}	
 	}
 	if (postLoaded && item === undefined) {
 		console.log("itemUNDEFINED");
@@ -239,6 +243,7 @@ function Brd_Open() {
 								rep={rep}
 								repTree={replies}
 								fetchComment={fetchComment}
+								login={login}
 							/>
 						);
 					})}

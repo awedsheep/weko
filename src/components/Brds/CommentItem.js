@@ -17,6 +17,7 @@ function CommentItem({
 	rep,
 	repTree,
 	fetchComment,
+	login
 }) {
 	const [commentBoxShow, setCommentBoxShow] = useState(false);
 	const [commentBody, setCommentBody] = useState("");
@@ -39,6 +40,7 @@ function CommentItem({
 					rep={rep}
 					repTree={repTree}
 					fetchComment={fetchComment}
+					login={login}
 				/>
 			);
 		});
@@ -53,12 +55,12 @@ function CommentItem({
 		// setCommentBody(commentBody);
 	}
 
-	console.log("add is " + add)
+
 	if(add){
 		var commentParam = {
 			cat: cat,
 			date: dateFormatted(),
-			name: "ms.G",
+			name: login.name,
 			comment: commentBody,
 			id: id + "-" + (replies.length + 1)
 		};

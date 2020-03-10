@@ -11,8 +11,11 @@ function Board({ name, cat }) {
 	const [postings, setPostings] = useGlobalState(cat);
 
 	var initLoad = false;
+	
 	if (postings.length !== 0) {
 		initLoad = true;
+	}else{
+		fetchTenItems()
 	}
 	const [loaded, setLoaded] = useState(initLoad);
 	// console.log(cat)
@@ -20,11 +23,19 @@ function Board({ name, cat }) {
 		var res;
 		if (postings.length === 0) {
 			if (cat === "forum") {
-				res = await getRecentTwenty("entertainment");
+				res = await getRecentTwenty("forum");
 				setPostings(res);
 				setLoaded(true);
 			} else if (cat === "news") {
 				res = await getRecentTwenty("news");
+				setPostings(res);
+				setLoaded(true);
+			}else if (cat === "buysell") {
+				res = await getRecentTwenty("buysell");
+				setPostings(res);
+				setLoaded(true);
+			}else if (cat === "info") {
+				res = await getRecentTwenty("info");
 				setPostings(res);
 				setLoaded(true);
 			}

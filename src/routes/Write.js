@@ -6,45 +6,65 @@ import "react-summernote/dist/react-summernote.css";
 import Resizer from "react-image-file-resizer";
 import axios from "axios";
 import { Icon, Modal, Form, Input, Select } from "semantic-ui-react";
-import { Prompt } from "react-router";
+import { Prompt, Redirect } from "react-router";
 import { useGlobalState, setNavName } from "../state.js";
 import { putPost, dateFormatted } from "../apiCall";
+
 
 const config = require("../config.json");
 let numIMG = 0;
 function Write() {
 	const [editorHtml, setEditorHtml] = useState("");
+	const [tag, setTag] = useState("");
+	const [title, setTitle] = useState("");
 	const [isFocus, setIsFocus] = useState(false);
 	const [modalOpen, setModelOpen] = useState(false);
+	const [toHome, setToHome] = useState(false);
 
 	const [currentNav] = useGlobalState("currentNav");
 	const [nameNav] = useGlobalState("name");
+	var currentURL = window.location.pathname.split("/")[2];
+	const [postings, setPostings] = useGlobalState(currentURL);
 
 	const options = [
-		{ key: "m", text: "[캐나다]", value: "male" },
-		{ key: "f", text: "[마니토바]", value: "female" },
-		{ key: "o", text: "[한인사회]", value: "other" }
+		{ key: "m", text: "[캐나다]", value: "[캐나다]" },
+		{ key: "f", text: "[마니토바]", value: "[마니토바]" },
+		{ key: "o", text: "[한인사회]", value: "[한인사회]" }
 	];
 
-	function handleSubmit() {
-		const newItem = {
-			cat: currentNav, //news
-			date: dateFormatted(),
-			body: "",
-			numComment: 0,
-			view: 0,
-			tag: ""
-		};
+	async function handleSubmit() {
+		if(title === ""){
+			alert("글 제목을 입력해주세요")
+		}else if(tag === ""){
+			alert("태그가 선택되지 않았습니다")
+		}else if(editorHtml === ""){
+			alert("글 내용이 없습니다")
+		}else{
+			const newItem = {
+				cat: currentNav, //news
+				date: dateFormatted(),
+				body: editorHtml,
+				numComment: 0,
+				title:title,
+				view: 0,
+				tag: tag
+			};
 
-		// putPost()
+			await putPost(newItem)
+			setToHome(true)
+			setPostings([])
+		}
+		
 	}
+
+	
 
 	const onChange = v => {
 		setEditorHtml(v);
 	};
 	//ask user if want to leave unsaved chages when HARD REFRESH
 	function beforeunload(e) {
-		console.log("object");
+
 		e.preventDefault();
 		if (isFocus) {
 			e.returnValue = true;
@@ -56,12 +76,16 @@ function Write() {
 		if (currentURL !== currentNav) {
 			setNavName(currentURL);
 		}
-		console.log(currentNav);
 		// Specify how to clean up after this effect:
 		return function cleanup() {
 			window.removeEventListener("beforeunload", beforeunload);
 		};
 	});
+
+	if(toHome){
+		
+		return(<Redirect to="/" />)
+	}
 
 	const handleImg = fileList => {
 		let res = [];
@@ -167,13 +191,14 @@ function Write() {
 			</Modal>
 			{/* <button onClick={oc}>BUTTON</button> */}
 			<span className="editor-title">{nameNav}</span>
-			<Form onSubmit={console.log("object")}>
+			<Form onSubmit={()=>console.log("object")}>
 				<Form.Group>
 					<Form.Field
 						control={Input}
 						label="글 제목"
 						placeholder="글제목을 입력해주세요"
 						width="8"
+						onChange={(e)=>setTitle(e.target.value)}
 						error
 					/>
 					<Form.Field
@@ -182,9 +207,11 @@ function Write() {
 						options={options}
 						placeholder="[태그선택]"
 						width="3"
-						onClick={(e, { option }) => console.log(e)}
+						onChange={(e, { value }) => setTag(value)}
 						error
 					/>
+					</Form.Group>
+			</Form>
 					<ReactSummernote
 						value={editorHtml}
 						options={{
@@ -206,13 +233,12 @@ function Write() {
 						onFocus={onFocus}
 					/>{" "}
 					<p>
-						<Form.Button content="submit" class="ui button">
+						<button onClick={handleSubmit} class="ui button">
 							글쓰기
-						</Form.Button>
-						<button class="ui button">뒤로가기</button>
+						</button>
+						<button class="ui button" onClick={()=>setToHome(true)}>뒤로가기</button>
 					</p>
-				</Form.Group>
-			</Form>
+				
 		</div>
 	);
 }

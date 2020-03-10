@@ -9,6 +9,8 @@ import BrdOpen from "./BrdOpen";
 
 function Brd({ name, data, cat }) {
 	const [currentNav] = useGlobalState("currentNav");
+	const [login, setlogin] = useGlobalState("state");
+	var isLoggedIn = login.isAuth;
 	var path = window.location.pathname;
 	var split = path.split("/");
 	cat = split[1];
@@ -72,20 +74,25 @@ function Brd({ name, data, cat }) {
 	var upUntilPage = Math.ceil(postings.length / 20);
 	var writeButton = (
 		<div className="writeButton">
-			<Link
+			{isLoggedIn ? <Link
 				to={{
 					pathname: "/write/" + cat,
 					name: name,
 					cat: { cat }
 				}}
-			>
-				<Button animated>
+			><Button animated>
 					<Button.Content visible>글쓰기</Button.Content>
 					<Button.Content hidden>
 						<Icon name="pencil alternate" />
 					</Button.Content>
 				</Button>
-			</Link>
+
+			</Link> : <Button onClick={() => alert("로그인 후 이용가능합니다")} animated>
+					<Button.Content visible>글쓰기</Button.Content>
+					<Button.Content hidden>
+						<Icon name="pencil alternate" />
+					</Button.Content>
+				</Button>}
 		</div>
 	);
 
@@ -115,8 +122,8 @@ function Brd({ name, data, cat }) {
 					{basePage * 5 + 1}
 				</Link>
 			) : (
-				<></>
-			)}
+					<></>
+				)}
 			{basePage * 5 + 2 <= upUntilPage ? (
 				<Link
 					to={"/" + cat + "/" + (basePage * 5 + 2)}
@@ -125,8 +132,8 @@ function Brd({ name, data, cat }) {
 					{basePage * 5 + 2}
 				</Link>
 			) : (
-				<></>
-			)}
+					<></>
+				)}
 			{basePage * 5 + 3 <= upUntilPage ? (
 				<Link
 					to={"/" + cat + "/" + (basePage * 5 + 3)}
@@ -135,8 +142,8 @@ function Brd({ name, data, cat }) {
 					{basePage * 5 + 3}
 				</Link>
 			) : (
-				<></>
-			)}
+					<></>
+				)}
 			{basePage * 5 + 4 <= upUntilPage ? (
 				<Link
 					to={"/" + cat + "/" + (basePage * 5 + 4)}
@@ -145,8 +152,8 @@ function Brd({ name, data, cat }) {
 					{basePage * 5 + 4}
 				</Link>
 			) : (
-				<></>
-			)}
+					<></>
+				)}
 			{basePage * 5 + 5 <= upUntilPage ? (
 				<Link
 					to={"/" + cat + "/" + (basePage * 5 + 5)}
@@ -155,8 +162,8 @@ function Brd({ name, data, cat }) {
 					{basePage * 5 + 5}
 				</Link>
 			) : (
-				<></>
-			)}
+					<></>
+				)}
 			<Link
 				to={
 					page + 1 <= upUntilPage || postings.length % 100 === 0
@@ -223,8 +230,8 @@ function Brd({ name, data, cat }) {
 					{basePage * 5 + 1}
 				</Link>
 			) : (
-				<></>
-			)}
+					<></>
+				)}
 			{basePage * 5 + 2 <= upUntilPage ? (
 				<Link
 					to={{
@@ -237,8 +244,8 @@ function Brd({ name, data, cat }) {
 					{basePage * 5 + 2}
 				</Link>
 			) : (
-				<></>
-			)}
+					<></>
+				)}
 			{basePage * 5 + 3 <= upUntilPage ? (
 				<Link
 					to={{
@@ -251,8 +258,8 @@ function Brd({ name, data, cat }) {
 					{basePage * 5 + 3}
 				</Link>
 			) : (
-				<></>
-			)}
+					<></>
+				)}
 			{basePage * 5 + 4 <= upUntilPage ? (
 				<Link
 					to={{
@@ -265,8 +272,8 @@ function Brd({ name, data, cat }) {
 					{basePage * 5 + 4}
 				</Link>
 			) : (
-				<></>
-			)}
+					<></>
+				)}
 			{basePage * 5 + 5 <= upUntilPage ? (
 				<Link
 					to={{
@@ -279,8 +286,8 @@ function Brd({ name, data, cat }) {
 					{basePage * 5 + 5}
 				</Link>
 			) : (
-				<></>
-			)}
+					<></>
+				)}
 			<Link
 				to={{
 					pathname:
@@ -309,7 +316,7 @@ function Brd({ name, data, cat }) {
 		</div>
 	);
 
-	
+
 
 	return (
 		<div className="brd">
