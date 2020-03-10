@@ -8,6 +8,7 @@ import axios from "axios";
 import { Icon, Modal, Form, Input, Select } from "semantic-ui-react";
 import { Prompt } from "react-router";
 import { useGlobalState, setNavName } from "../state.js";
+import { putPost, dateFormatted } from "../apiCall";
 
 const config = require("../config.json");
 let numIMG = 0;
@@ -24,6 +25,19 @@ function Write() {
 		{ key: "f", text: "[마니토바]", value: "female" },
 		{ key: "o", text: "[한인사회]", value: "other" }
 	];
+
+	function handleSubmit() {
+		const newItem = {
+			cat: currentNav, //news
+			date: dateFormatted(),
+			body: "",
+			numComment: 0,
+			view: 0,
+			tag: ""
+		};
+
+		// putPost()
+	}
 
 	const onChange = v => {
 		setEditorHtml(v);
@@ -153,7 +167,7 @@ function Write() {
 			</Modal>
 			{/* <button onClick={oc}>BUTTON</button> */}
 			<span className="editor-title">{nameNav}</span>
-			<Form>
+			<Form onSubmit={console.log("object")}>
 				<Form.Group>
 					<Form.Field
 						control={Input}
@@ -168,37 +182,37 @@ function Write() {
 						options={options}
 						placeholder="[태그선택]"
 						width="3"
+						onClick={(e, { option }) => console.log(e)}
 						error
 					/>
+					<ReactSummernote
+						value={editorHtml}
+						options={{
+							placeholder: "여기에 글을 써주세요.",
+							minHeight: 500,
+							spellCheck: false,
+							disableResizeEditor: false,
+							dialogsInBody: true,
+							toolbar: [
+								["style", ["bold", "italic", "underline", "clear"]],
+								["fontsize", ["fontsize"]],
+								// ["color", ["color"]],
+								["para", ["ul", "ol", "paragraph"]],
+								["insert", ["link", "picture", "video"]]
+							]
+						}}
+						onChange={onChange}
+						onImageUpload={handleImg}
+						onFocus={onFocus}
+					/>{" "}
+					<p>
+						<Form.Button content="submit" class="ui button">
+							글쓰기
+						</Form.Button>
+						<button class="ui button">뒤로가기</button>
+					</p>
 				</Form.Group>
 			</Form>
-			<ReactSummernote
-				value={editorHtml}
-				options={{
-					placeholder: "여기에 글을 써주세요.",
-					minHeight: 500,
-					spellCheck: false,
-					disableResizeEditor: false,
-					dialogsInBody: true,
-					toolbar: [
-						["style", ["bold", "italic", "underline", "clear"]],
-						["fontsize", ["fontsize"]],
-						// ["color", ["color"]],
-						["para", ["ul", "ol", "paragraph"]],
-						["insert", ["link", "picture", "video"]]
-					]
-				}}
-				onChange={onChange}
-				onImageUpload={handleImg}
-				onFocus={onFocus}
-			/>{" "}
-			<div
-			// dangerouslySetInnerHTML={{
-			// 	__html: editorHtml
-			// }}
-			>
-				{editorHtml}
-			</div>
 		</div>
 	);
 }
